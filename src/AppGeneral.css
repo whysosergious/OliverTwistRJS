@@ -1,0 +1,33 @@
+section {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	align-items: center;
+	width: 100%;
+
+	padding: 4rem 0 7rem 0;
+
+	background-color: var(--light);
+}
+section.dark {
+	background-color: var(--dark);
+}
+section.accent {
+	background-color: var(--acc);
+}
+
+.Heading-Group {
+	width: 90%;
+}
+.left {
+	text-align: left;
+	padding-right: 10%;
+}
+.right {
+	text-align: right;
+	padding-left: 10%;
+}
+
+.Image-Wrapper {
+	background-color: rgb(124, 124, 141);
+}

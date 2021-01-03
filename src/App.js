@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import './AppGeneral.css';
+
+// nav
+import Navigation from './Navigation/Container';
+
+// Page Sections
+import LandingContainer from './Landing/Container';
+import DoormatContainer from './Doormat/Container';
+import NewsContainer from './News/Container';
+import GalleryContainer from './Gallery/Container';
+import MenuContainer from './Menu/Container';
+import AboutContainer from './About/Container';
+import ContactContainer from './Contact/Container';
+import FooterContainer from './Footer/Container';
+
 
 function App() {
   return (
-    <div className="App">
+    <main className="App">
+      <LandingContainer />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
-    </div>
+
+      <DoormatContainer />
+		<NewsContainer />
+		<GalleryContainer />
+		<MenuContainer />
+		<AboutContainer />
+		<ContactContainer />
+		<FooterContainer />
+    </main>
   );
 }
 

@@ -1,0 +1,32 @@
+.News-Post {
+	width: 90%;
+	margin-top: 4rem;
+}
+
+.News-Post .Image-Wrapper {
+	min-height: 20rem;
+}
+
+.News-Post-Content {
+	text-align: left;
+	width: 100%;
+	padding: 1rem 1rem 1.5rem 1rem;
+	margin-top: .6rem;
+
+	background-color: #d8e7e3;
+}
+
+.News-Post-Content h4 {
+	margin: 1rem 0 1.5rem 0;
+}
+
+.Tags-Container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+}
+
+.Hash-Tag {
+	margin-right: 1rem;
+}

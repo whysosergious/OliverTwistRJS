@@ -1,0 +1,18 @@
+.About-Group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 7rem;
+}
+
+.About-Group .Image-Wrapper {
+	height: 14rem;
+	width: 95%;
+	margin-top: 1.4rem;
+}
+.About-Group .right + .Image-Wrapper {
+	align-self: flex-start;
+}
+.About-Group .left + .Image-Wrapper {
+	align-self: flex-end;
+}
