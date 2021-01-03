@@ -51,17 +51,26 @@ button:focus {
 button.menu {
 	height: 7rem;
 	width: 80%;
-	padding: 1rem;
+	padding: .6rem;
 	border: none;
 	border-radius: unset;
 	margin-top: 1rem;
+
+	overflow: hidden;
 
 	/* temp */
 	background-color: cornflowerblue;
 }
 
+button img {
+	position: absolute;
+	min-height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
 button.menu h2 {
 	font-size: 3rem;
-	background-color: rgba(0, 0, 0, 0.281);
+	background-color: rgba(7, 9, 15, 0.74);
 }
 
