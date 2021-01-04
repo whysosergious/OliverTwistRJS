@@ -1,0 +1,37 @@
+
+.Business-Hours {
+	width: 75%;
+	max-width: 27rem;
+	height: 100%;
+	padding: 4rem 4rem 2.5rem 4rem;
+	margin: 4rem 0 4rem 0;
+	background-color: rgb(6, 7, 6);
+}
+
+.Business-Hours .headline {
+	margin-bottom: 4rem;
+}
+
+.Business-Hours .Button-Group {
+	justify-content: space-around;
+
+	margin-top: 3rem;
+}
+
+.Day {
+	display: flex;
+	flex-direction: row;
+	margin: 1.5rem 0;
+}
+.Day :nth-child(1) {
+	margin-right: auto;
+}
+
+
+@media screen and (min-width: 940px) {
+	.Business-Hours {
+		height: 100%;
+		--res-scale: calc(4rem + ((100vw - 1300px) / 15));
+		padding: 4rem var(--res-scale) 2.5rem var(--res-scale)
+	}
+}

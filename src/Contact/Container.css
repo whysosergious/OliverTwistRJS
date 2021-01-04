@@ -1,0 +1,74 @@
+.Contact-Group {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	height: max-content;
+	width: 100%;
+	padding: 6rem 0;
+}
+
+.Contact-Group .Heading-Group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+.Contact-Message {
+	max-width: 40rem;
+}
+
+.Contact-Group .overlay::after {
+	background-color: rgba(29, 0, 0, 0.877);
+}
+
+
+.Business-Hours-Wrapper {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	height: 100%;
+	width: 100%;
+}
+section.Contact-Container {
+	position: relative;
+	background-color: #040b0e;
+}
+.Contact-Container::after {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0; left: 0;
+
+	/* stripes */
+	background: repeating-linear-gradient( 135deg,
+		transparent,
+		transparent .3rem,
+		#000000 .3rem,
+		#000000 .6rem
+	  ),
+	  linear-gradient( to bottom,
+		rgba(221, 238, 248, 0.829),
+		transparent
+  	);
+
+	opacity: .05;
+}
+
+
+@media screen and (min-width: 940px) {
+	.Contact-Container {
+		flex-direction: row;
+	}
+
+	.Contact-Group {
+		width: 50%;
+	}
+
+	.Contact-Container .Business-Hours-Wrapper {
+		width: 50%;
+	}
+}

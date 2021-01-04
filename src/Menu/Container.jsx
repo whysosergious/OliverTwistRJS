@@ -6,7 +6,7 @@ import './Container.css';
 import Button from 'shared/Button';
 
 // media
-import menuImage from 'ass/img/ess/menu.jpg';
+import menuImage from 'ass/img/menu.jpg';
 
 // components
 import ImageWrapper from 'shared/ImageWrapper';

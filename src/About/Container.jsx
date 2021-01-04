@@ -18,7 +18,7 @@ const AboutContainer = props => {
    return (
 		<>
 			<section className="About-Container"
-				style={{ position: 'relative' }}
+				style={{ position: 'relative', paddingBottom: '12rem' }}
 			>
 				<ImageWrapper imgSrc={ repslagarBackground }
 					imgDesc="Vector of the outside of the bar at Repslagargatan, Södermalm"

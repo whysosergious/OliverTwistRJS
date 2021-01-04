@@ -30,6 +30,7 @@ function App() {
 		<AboutContainer />
 		<ContactContainer />
 		<FooterContainer />
+
     </main>
   );
 }

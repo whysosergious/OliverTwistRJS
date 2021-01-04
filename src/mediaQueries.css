@@ -12,11 +12,11 @@
 }
 @media screen and (min-width: 941px) and (max-width: 1200px) {
    :root {
-		font-size: calc(18px + (18 - 16) * (100vw - 1200px) / (1200 - 941));
+		font-size: calc(17px + (17 - 16) * (100vw - 1200px) / (1200 - 941));
    }
 }
 @media screen and (min-width: 1201px) {
    :root {
-		font-size: 18px;
+		font-size: 17px;
    }
 }
