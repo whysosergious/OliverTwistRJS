@@ -36,6 +36,10 @@ h3 {
 	line-height: 1.9rem;
 	color: #fff;
 }
+.About-Group h3 {
+	font-size: 1rem;
+	line-height: 1.6rem;
+}
 
 h4 {
 	font-family: 'Inter', sans-serif;

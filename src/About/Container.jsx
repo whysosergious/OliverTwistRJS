@@ -4,11 +4,36 @@
 import React from 'react';
 import './Container.css';
 
+// media
+import repslagarBackground from 'ass/vector/files/entrance.svg';
+import greatBrandsImage from 'ass/img/about/great-brands-import.jpg';
+import swedenColabImage from 'ass/img/about/sweden-colab.jpg';
+import mainBarImage from 'ass/img/about/main-bar.jpg';
+import caskAleImage from 'ass/img/about/cask-ale.jpg';
+
+// components
+import ImageWrapper from 'shared/ImageWrapper';
+
 const AboutContainer = props => {
    return (
 		<>
-			<section className="About-Container">
-				<div className="Heading-Group left">
+			<section className="About-Container"
+				style={{ position: 'relative' }}
+			>
+				<ImageWrapper imgSrc={ repslagarBackground }
+					imgDesc="Vector of the outside of the bar at Repslagargatan, Södermalm"
+					style={{
+						background: 'none',
+						position: 'absolute',
+						height: '100vh',
+						width: 'unset',
+						minWidth: '100%',
+						objectFit: 'cover',
+						top: '0',
+						opacity: '.05'
+					}}
+				/>
+				<div className="Heading-Group Intro left">
 					<h1 className="dark">
 						It's not complicated
 					</h1>
@@ -20,32 +45,32 @@ const AboutContainer = props => {
 					</h3>
 				</div>
 
-				<div className="About-Group">
+				<div className="About-Group right">
 					<div className="Heading-Group right">
 						<h2 className="dark">
-							Samarbete & Import
+							Samarbete<br/>& Import
 						</h2>
 						<h3 className="dark">
 							Sedan 2008 har vi med stor hjälp av vårt egna importföretag sett till att ha Nordens, om inte Europas starkaste utbud av Amerikansk Craft Beer i våra kylar. Så titta förbi och upptäck varför.
 						</h3>
 					</div>
-					<div className="Image-Wrapper">
-
-					</div>
+					<ImageWrapper imgSrc={ greatBrandsImage }
+						imgDesc="Logo of sister import company Great Brands"
+					/>
 				</div>
 
-				<div className="About-Group">
+				<div className="About-Group left">
 					<div className="Heading-Group left">
 						<h2 className="dark">
-							Support your local brewers
+							Support your<br/>local brewers
 						</h2>
 						<h3 className="dark">
 							Vi samarbetar nära med Sveriges skickligaste bryggare. Och man hittar allt från nyheter till gamla godingar på både fat och flaska. Många gånger får vi också besök av våra lokala stjärnor.
 						</h3>
 					</div>
-					<div className="Image-Wrapper">
-
-					</div>
+					<ImageWrapper imgSrc={ swedenColabImage }
+						imgDesc="Brewers from Swedish Nynäshamn Brewery and American SKA tasting newly brewed beer"
+					/>
 				</div>
 			</section>
 
@@ -53,32 +78,32 @@ const AboutContainer = props => {
 			<section className="About-Container dark"
 				style={{ paddingTop: '0' }}
 			>
-				<div className="About-Group">
+				<div className="About-Group right">
 					<div className="Heading-Group right">
 						<h2>
-							Med service i fokus
+							Service i fokus
 						</h2>
 						<h3>
 							Praesent tristique dui fringilla, blandit nibh eget, tempus tortor. Nam a porta enim. Donec venenatis ligula tortor, eu dictum arcu bibendum id. In sed odio ac turpis sodales facilisis.
 						</h3>
 					</div>
-					<div className="Image-Wrapper">
-
-					</div>
+					<ImageWrapper imgSrc={ mainBarImage }
+						imgDesc="Main bar before service"
+					/>
 				</div>
 
-				<div className="About-Group">
+				<div className="About-Group left">
 					<div className="Heading-Group left">
 						<h2>
-							Vi strävar efter kvalitet
+							Vi strävar<br/>efter kvalitet
 						</h2>
 						<h3>
 							Vår hantering av Real Ale gjorde att vi 2001 fick den brittiska utmärkelsen Cask Marque som första pub utanför de brittiska öarna, en utmärkelse vi fått varje år sedan dess.
 						</h3>
 					</div>
-					<div className="Image-Wrapper">
-
-					</div>
+					<ImageWrapper imgSrc={ caskAleImage }
+						imgDesc="Three Real Ale taps with Swedish and Brittish Cask Ale"
+					/>
 				</div>
 			</section>
 		</>

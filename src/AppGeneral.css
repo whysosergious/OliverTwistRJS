@@ -18,12 +18,13 @@ section.accent {
 
 .Heading-Group {
 	width: 90%;
+	z-index: 2;
 }
-.left {
+.Heading-Group.left {
 	text-align: left;
 	padding-right: 10%;
 }
-.right {
+.Heading-Group.right {
 	text-align: right;
 	padding-left: 10%;
 }

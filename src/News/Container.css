@@ -46,8 +46,8 @@
 		justify-content: center;
 	}
 	.News-Post {
-		--horizontal-margin: calc(3vw + (10 - 2) * (100vw - 940px) / (940 - 501));
-		max-width: calc(13.5rem + 8%);
+		--horizontal-margin: calc(1vw + (100vw - 940px) / (940 - 501));
+		max-width: calc(92vw / 2 - ((100vw - 500px) / 4));
 		margin: 4rem var(--horizontal-margin) 0 var(--horizontal-margin);
 	}
 }
@@ -59,8 +59,6 @@
 		justify-content: center;
 	}
 	.News-Post {
-		--horizontal-margin: calc(1.7vw + (10 - 2) * (100vw - 1600px) / (1600 - 941));
-		max-width: calc(14rem + 6%);
-		margin: 4rem var(--horizontal-margin) 0 var(--horizontal-margin);
+		max-width: calc(92vw / 3 - ((100vw - 940px) / 6));
 	}
 }

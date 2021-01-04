@@ -7,6 +7,8 @@ import Button from 'shared/Button';
 
 // media
 import menuImage from 'ass/img/ess/menu.jpg';
+
+// components
 import ImageWrapper from 'shared/ImageWrapper';
 
 const MenuContainer = props => {
@@ -28,16 +30,17 @@ const MenuContainer = props => {
 				</div>
 			</div>
 
-
-			<Button altClass="menu"
-				text="Lunch"
-			/>
-			<Button altClass="menu"
-				text="A la Carté"
-			/>
-			<Button altClass="menu"
-				text="Öl & Dryck"
-			/>
+			<div className="Button-Group">
+				<Button altClass="menu"
+					text="Lunch"
+				/>
+				<Button altClass="menu"
+					text="A la Carté"
+				/>
+				<Button altClass="menu"
+					text="Öl & Dryck"
+				/>
+			</div>
       </section>
    );
 }

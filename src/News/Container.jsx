@@ -6,6 +6,7 @@ import './Container.css';
 
 // components
 import NewsPost from './Post';
+import Button from 'shared/Button';
 
 const NewsContainer = props => {
    return (
@@ -26,6 +27,10 @@ const NewsContainer = props => {
 				<NewsPost />
 				<NewsPost />
 			</div>
+			<Button altClass="dark"
+				text="Ladda fler"
+				style={{ marginTop: '7rem' }}
+			/>
       </section>
    );
 }
