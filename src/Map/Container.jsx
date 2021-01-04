@@ -289,6 +289,6 @@ const MapContainer = props => {
 
 
 export default GoogleApiWrapper({
-	apiKey: 'AIzaSyBD5Y3X4Y0ZPlwxzFpvhRNbU4drSQW2NXY',
+	apiKey: '',
 	version: 3.43
 })(MapContainer);
