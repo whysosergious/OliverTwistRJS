@@ -1,3 +1,15 @@
-.Menu-Container .Heading-Group {
-	margin-bottom: 2rem;
+.Menu-Container {
+	padding: 1rem 1rem 4rem 1rem;
+}
+
+.Menu-Group {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 27rem;
+	width: 100%;
+
+	margin-bottom: 1rem;
 }

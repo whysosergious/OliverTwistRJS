@@ -10,7 +10,9 @@ import NewsPost from './Post';
 const NewsContainer = props => {
    return (
       <section className="News-Container">
-			<div className="Heading-Group">
+			<div className="Heading-Group"
+				style={{ width: '80%', maxWidth: '30rem' }}
+			>
 				<h1 className="dark">
 					Senaste Nytt
 				</h1>
@@ -19,9 +21,11 @@ const NewsContainer = props => {
 				</h3>
 			</div>
 
-			<NewsPost />
-			<NewsPost />
-			<NewsPost />
+			<div className="News-Post-Container">
+				<NewsPost />
+				<NewsPost />
+				<NewsPost />
+			</div>
       </section>
    );
 }

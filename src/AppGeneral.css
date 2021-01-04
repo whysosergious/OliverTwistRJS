@@ -29,5 +29,35 @@ section.accent {
 }
 
 .Image-Wrapper {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	font-size: 0;
+	/* temp */
 	background-color: rgb(124, 124, 141);
+}
+.Image-Wrapper.overlay::after {
+	content: '';
+	position: absolute;
+	top: 0; left: 0;
+	height: 100%;
+	width: 100%;
+
+	background-color: rgba(1, 14, 19, 0.801);
+	z-index: 2;
+}
+
+.Image-Wrapper img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.Image-Wrapper.background {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+
+	z-index: -1;
 }

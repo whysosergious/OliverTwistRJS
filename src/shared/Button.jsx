@@ -5,14 +5,12 @@ import React from 'react';
 import './Button.css';
 
 const Button = props => {
-	const { text, type, imgSrc, imgDesc } = props;
-
-	// adding background to menu buttons
-	const image = type === 'menu' ? <img src={ imgSrc } alt={ imgDesc } /> : null ;
+	const { text, altClass, style } = props;
 
    return (
-      <button className={ type }>
-			{ image }
+      <button className={ altClass }
+			style={ style }
+		>
 			<h2>{ text }</h2>
 		</button>
    );

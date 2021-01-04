@@ -1,3 +1,10 @@
+.News-Post-Container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
 .News-Post {
 	width: 90%;
 	margin-top: 4rem;
@@ -29,4 +36,31 @@
 
 .Hash-Tag {
 	margin-right: 1rem;
+}
+
+
+@media screen and (min-width: 501px) {
+	.News-Post-Container {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.News-Post {
+		--horizontal-margin: calc(3vw + (10 - 2) * (100vw - 940px) / (940 - 501));
+		max-width: calc(13.5rem + 8%);
+		margin: 4rem var(--horizontal-margin) 0 var(--horizontal-margin);
+	}
+}
+
+@media screen and (min-width: 941px) {
+	.News-Post-Container {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.News-Post {
+		--horizontal-margin: calc(1.7vw + (10 - 2) * (100vw - 1600px) / (1600 - 941));
+		max-width: calc(14rem + 6%);
+		margin: 4rem var(--horizontal-margin) 0 var(--horizontal-margin);
+	}
 }
