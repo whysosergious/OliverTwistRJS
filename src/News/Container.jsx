@@ -1,14 +1,26 @@
 /**
  * News from Instagram
  */
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './Container.css';
+
+// contexts
+import { kernel } from 'logic/kernel';
 
 // components
 import NewsPost from './Post';
 import Button from 'shared/Button';
 
+
+
 const NewsContainer = props => {
+	const [ states, setStates ] = useState(0);	// standard hook
+
+	// link component to context object
+	const { _gl } = useContext(kernel);
+	_gl.init([ 'NewsContainer', { set: setStates }]);
+
+
    return (
       <section className="News-Container">
 			<div className="Heading-Group"
@@ -22,14 +34,25 @@ const NewsContainer = props => {
 				</h3>
 			</div>
 
-			<div className="News-Post-Container">
+			<div className="News-Post-Container"
+
+				onClick={() => {
+					_gl.BusinessHours.set({
+						'btnTextReg': 'This is',
+						'btnTextExc': 'SO much better'
+					});
+				}}
+			>
+
 				<NewsPost />
 				<NewsPost />
 				<NewsPost />
 			</div>
 			<Button altClass="dark"
-				text="Ladda fler"
 				style={{ marginTop: '7rem' }}
+
+				text={ states.buttonText || 'Ladda fler' }	// conditional state
+
 			/>
       </section>
    );

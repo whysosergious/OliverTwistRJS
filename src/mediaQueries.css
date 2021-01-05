@@ -7,12 +7,12 @@
 
 @media screen and (min-width: 501px) and (max-width: 940px) {
    :root {
-		font-size: calc(16px + (16 - 14) * (100vw - 940px) / (940 - 501));
+		font-size: calc(8px + (8 - 6) * (100vw - 940px) / (940 - 501));
 	}
 }
 @media screen and (min-width: 941px) and (max-width: 1200px) {
    :root {
-		font-size: calc(17px + (17 - 16) * (100vw - 1200px) / (1200 - 941));
+		font-size: calc(12px + (12 - 8) * (100vw - 1200px) / (1200 - 941));
    }
 }
 @media screen and (min-width: 1201px) {
