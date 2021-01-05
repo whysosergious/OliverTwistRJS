@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import './Anchor.css';
 
-const Anchor = (props) => {
+const Anchor = props => {
 	const { text, altClass, style, link, fileName } = props;
 
 	// dynamically import media :)
@@ -14,9 +14,19 @@ const Anchor = (props) => {
 		import(`ass/vector/icons/files/${ fileName }`).then(ico => {
 			setIcon(ico.default);
 		});
-	});
+	}, [fileName]);
 
-	const iconSrc = altClass === 'icon' ? <img src={ icon } alt={ `${ fileName } icon` } /> : null ;
+	if(!icon) return(null);
+
+	let textMargin = text ? { marginRight: '.6rem' } : null ;
+	let iconSrc = altClass === 'icon'
+		?
+		<img src={ icon }
+			alt={ `${ fileName } icon` }
+			style={ textMargin }
+		/>
+		:
+		null;
 
 	console.log(icon)
 

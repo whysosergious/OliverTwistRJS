@@ -15,10 +15,10 @@ const NewsContainer = props => {
 				style={{ width: '80%', maxWidth: '30rem' }}
 			>
 				<h1 className="dark">
-					Senaste Nytt
+					<span>Senaste</span>Nyheter
 				</h1>
 				<h3 className="dark">
-					Nyheter, evenemang, nysläpp och mycket mer uppdaterat dagligen.
+					Evenemang, nysläpp och mycket mer uppdaterat dagligen.
 				</h3>
 			</div>
 

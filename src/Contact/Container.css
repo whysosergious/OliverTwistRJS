@@ -34,7 +34,8 @@
 }
 section.Contact-Container {
 	position: relative;
-	background-color: #040b0e;
+	/* background-color: #090811; */
+	background-color: #0a080f;
 }
 .Contact-Container::after {
 	content: '';
@@ -47,15 +48,12 @@ section.Contact-Container {
 	background: repeating-linear-gradient( 135deg,
 		transparent,
 		transparent .3rem,
-		#000000 .3rem,
-		#000000 .6rem
-	  ),
-	  linear-gradient( to bottom,
-		rgba(221, 238, 248, 0.829),
-		transparent
+		#ff0000 .3rem,
+		#ff0000 .6rem
+
   	);
 
-	opacity: .05;
+	opacity: .07;
 }
 
 

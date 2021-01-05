@@ -22,7 +22,7 @@ const LandingContainer = props => {
 			</div>
 
 			<div className="Button-Group">
-				<Button altClass="minimal"
+				<Button altClass="minimal small"
 					text="Våra Öppettider"
 				/>
 				<Button altClass="cta"

@@ -2,15 +2,20 @@
 	display: flex;
 	/* justify-content: center; */
 	align-items: center;
-	min-height: 100vh;
+	min-height: 100%;
 	height: max-content;
 	background-color: #000;
 }
 
+.Landing-Container button.small h2 {
+	margin-top: .2rem;
+	font-size: 2.2rem;
+}
+
 .Landing-Logo {
 	width: 12%;
-	margin-top: 10vh;
-	margin-bottom: 2vh;
+	margin-top: 10%;
+	margin-bottom: 2%;
 }
 
 .Greeting-Group {
@@ -18,7 +23,7 @@
 	flex-direction: column;
 	align-items: center;
 
-	margin-bottom: 15vh;
+	margin-bottom: 15%;
 }
 
 
@@ -41,3 +46,4 @@
 	border-top: .3rem solid white;
 	/* border-bottom: .17rem solid white; */
 }
+

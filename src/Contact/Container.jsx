@@ -1,7 +1,7 @@
 /**
  * Contact, opening hours and Google maps
  */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Container.css';
 
 // media
@@ -9,12 +9,23 @@ import cornerImage from 'ass/img/contact/corner.jpg';
 
 // components
 import BusinessHours from 'BusinessHours/Container';
-import MapContainer from 'Map/Container';
+import GoogleMap from 'Map/Container';
 import ImageWrapper from 'shared/ImageWrapper';
 import Button from 'shared/Button';
 import Anchor from 'shared/Anchor';
 
+
+
+
 const ContactContainer = props => {
+
+	const [ map, setMap ] = useState(null);
+
+	useEffect(() => {
+
+	}, []);
+
+
    return (
 		<>
 			<section className="Contact-Container dark"
@@ -26,15 +37,15 @@ const ContactContainer = props => {
 						altClass="background overlay"
 					/>
 					<div className="Heading-Group">
-						<h1>
+						<h2>
 							Kontakta oss
-						</h1>
-						<h3 className="Contact-Message">
+						</h2>
+						<h4 className="Contact-Message light">
 							Har du frågor? Hesitera inte att höra av dig via telefon eller mejl! Boka bord gör du enkelt online för begränsad antal i sällskapet. För större sällskap ring eller mejla så ordnar vi det!
 							<p>
 								OBS! På grund av rådande begränsningar under pandemin kan vi inte ta emot sällskap med fler än fyra personer.
 							</p>
-						</h3>
+						</h4>
 						<Button altClass="minimal"
 							text="Boka bord online"
 							style={{ display: 'inline-block', margin: '3rem' }}
@@ -61,8 +72,12 @@ const ContactContainer = props => {
 				</div>
 
 			</section>
-			<section className="Map-Container">
-				<MapContainer />
+
+			{/* try doing this in a separate component, might minimize rerenders */}
+			<section className="Map-Container"
+				onClick={ e => setMap(<GoogleMap />) }
+			>
+				{ map }
 			</section>
 
 		</>

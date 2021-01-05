@@ -25,7 +25,7 @@ const AboutContainer = props => {
 					style={{
 						background: 'none',
 						position: 'absolute',
-						height: '100vh',
+						height: '50rem',
 						width: 'unset',
 						minWidth: '100%',
 						objectFit: 'cover',
@@ -50,7 +50,7 @@ const AboutContainer = props => {
 						<h2 className="dark">
 							Samarbete<br/>& Import
 						</h2>
-						<h3 className="dark">
+						<h3 className="dark small">
 							Sedan 2008 har vi med stor hjälp av vårt egna importföretag sett till att ha Nordens, om inte Europas starkaste utbud av Amerikansk Craft Beer i våra kylar. Så titta förbi och upptäck varför.
 						</h3>
 					</div>
@@ -64,7 +64,7 @@ const AboutContainer = props => {
 						<h2 className="dark">
 							Support your<br/>local brewers
 						</h2>
-						<h3 className="dark">
+						<h3 className="dark small">
 							Vi samarbetar nära med Sveriges skickligaste bryggare. Och man hittar allt från nyheter till gamla godingar på både fat och flaska. Många gånger får vi också besök av våra lokala stjärnor.
 						</h3>
 					</div>
@@ -83,7 +83,7 @@ const AboutContainer = props => {
 						<h2>
 							Service i fokus
 						</h2>
-						<h3>
+						<h3 className="small">
 							Praesent tristique dui fringilla, blandit nibh eget, tempus tortor. Nam a porta enim. Donec venenatis ligula tortor, eu dictum arcu bibendum id. In sed odio ac turpis sodales facilisis.
 						</h3>
 					</div>
@@ -97,7 +97,7 @@ const AboutContainer = props => {
 						<h2>
 							Vi strävar<br/>efter kvalitet
 						</h2>
-						<h3>
+						<h3 className="small">
 							Vår hantering av Real Ale gjorde att vi 2001 fick den brittiska utmärkelsen Cask Marque som första pub utanför de brittiska öarna, en utmärkelse vi fått varje år sedan dess.
 						</h3>
 					</div>

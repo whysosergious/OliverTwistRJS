@@ -19,10 +19,10 @@
 }
 
 .About-Group .Heading-Group.left {
-	padding-right: 30%;
+	padding-right: 12%;
 }
 .About-Group .Heading-Group.right {
-	padding-left: 30%;
+	padding-left: 12%;
 }
 
 .About-Group .Image-Wrapper {
@@ -37,7 +37,7 @@
 	align-self: flex-end;
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 1201px) {
 	.Intro.left {
 		text-align: center;
 		width: 75%;
@@ -46,6 +46,8 @@
 	}
 	.Intro h1 {
 		align-self: center;
+		max-width: 40rem;
+		line-height: 7.5rem;
 	}
 
 	.About-Group {
@@ -65,8 +67,8 @@
 	}
 
 	.About-Group .Heading-Group {
-		width: 40%;
-		padding: 0 1.4rem;
+		width: 50%;
+		padding: 0 3rem;
 
 	}
 	.About-Group .Heading-Group.right {

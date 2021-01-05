@@ -1,15 +1,27 @@
 
+.Business-Hours button h2 {
+	font-size: 1.8rem;
+}
+.Business-Hours h2 {
+	font-size: 3rem;
+}
+
+.Business-Hours h3 {
+	font-size: 1.2rem;
+	line-height: 1.9rem;
+}
+
 .Business-Hours {
 	width: 75%;
 	max-width: 27rem;
 	height: 100%;
 	padding: 4rem 4rem 2.5rem 4rem;
 	margin: 4rem 0 4rem 0;
-	background-color: rgb(6, 7, 6);
+	background-color: #141718e7;
 }
 
 .Business-Hours .headline {
-	margin-bottom: 4rem;
+	margin-bottom: 2.4rem;
 }
 
 .Business-Hours .Button-Group {
