@@ -19,6 +19,6 @@ const _gl = {
 // standard react provider
 const StateProvider = ({ children }) => {
 	return <Provider value={{ _gl }}>{ children }</Provider>;
-};
+}
 
-export { kernel, StateProvider };
+export { kernel, StateProvider }

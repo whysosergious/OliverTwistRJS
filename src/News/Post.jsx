@@ -2,6 +2,8 @@
  * News post component
  */
 import React from 'react';
+
+// components
 import ImageWrapper from 'shared/ImageWrapper';
 
 // collect and map hashtags before render
@@ -12,8 +14,9 @@ const hashTags = hashTagsArray.map((tag, index) => {
 });
 
 const NewsPost = props => {
+
    return (
-      <div className="News-Post">
+      <div className={ `News-Post` }>
 			<ImageWrapper />
 
 			<div className="News-Post-Content">

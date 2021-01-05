@@ -2,6 +2,9 @@
 import './App.css';
 import './AppGeneral.css';
 
+// logic
+import { ViewportLogic } from 'logic/viewport';
+
 // nav
 // import Navigation from './Navigation/Container';
 
@@ -19,6 +22,8 @@ import FooterContainer from './Footer/Container';
 function App() {
   return (
     <main className="App">
+		<ViewportLogic />
+
       <LandingContainer />
       <header className="App-header">
       </header>

@@ -5,10 +5,10 @@ import React, { useContext, useState } from 'react';
 import './Container.css';
 
 // contexts
-import { kernel } from 'logic/kernel';
+import { kernel } from 'logic/kernel';		// import our singleton
 
 // components
-import NewsPost from './Post';
+import PostGroup from './PostGroup';
 import Button from 'shared/Button';
 
 
@@ -18,8 +18,14 @@ const NewsContainer = props => {
 
 	// link component to context object
 	const { _gl } = useContext(kernel);
-	_gl.init([ 'NewsContainer', { set: setStates }]);
+	_gl.init([ 'NewsContainer', { set: setStates, status: states }]);
 
+	const loadPosts = () => {
+		// console.log(_gl.PostGroup.count)
+		_gl.PostGroup.count += 4;
+		_gl.PostGroup.set({ int: _gl.PostGroup.count });
+		console.log(_gl.PostGroup.count)
+	}
 
    return (
       <section className="News-Container">
@@ -34,25 +40,15 @@ const NewsContainer = props => {
 				</h3>
 			</div>
 
-			<div className="News-Post-Container"
-
-				onClick={() => {
-					_gl.BusinessHours.set({
-						'btnTextReg': 'This is',
-						'btnTextExc': 'SO much better'
-					});
-				}}
-			>
-
-				<NewsPost />
-				<NewsPost />
-				<NewsPost />
+			<div className="News-Post-Container">
+				<PostGroup />
 			</div>
+
 			<Button altClass="dark"
 				style={{ marginTop: '7rem' }}
+				text={ 'Ladda fler' }	// conditional state
 
-				text={ states.buttonText || 'Ladda fler' }	// conditional state
-
+				action={ loadPosts }
 			/>
       </section>
    );

@@ -11,7 +11,6 @@ import { kernel } from 'logic/kernel';
 import Button from 'shared/Button';
 
 
-
 const BusinessHours = props => {
 	const [ states, setStates ] = useState(0);	// standard hook
 
@@ -57,6 +56,7 @@ const BusinessHours = props => {
 				<h3 className="accent">Söndag</h3>
 				<h3>13 - 20</h3>
 			</div>
+
 			<div className="Button-Group">
 				<Button altClass="conditional minimal"
 					text={ states.btnTextReg || 'Regulära' }
