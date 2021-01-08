@@ -5,10 +5,10 @@ import React from 'react';
 import './Button.css';
 
 const Button = props => {
-	const { text, altClass, style, textColor } = props;
+	const { text, altClass, style, textColor, action } = props;
 
 	const handleClick = () => {
-		props.action();
+		action();
 	}
 
    return (

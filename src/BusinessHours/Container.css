@@ -1,27 +1,25 @@
 
 .Business-Hours button h2 {
-	font-size: 1.8rem;
+	font-size: 1.3rem;
 }
 .Business-Hours h2 {
-	font-size: 3rem;
+	font-size: 2rem;
 }
 
 .Business-Hours h3 {
-	font-size: 1.2rem;
-	line-height: 1.9rem;
+	font-size: .9rem;
+	line-height: .9rem;
 }
 
 .Business-Hours {
-	width: 75%;
-	max-width: 27rem;
-	height: 100%;
-	padding: 4rem 4rem 2.5rem 4rem;
+	width: 20rem;
+	padding: 2rem 3rem 2rem 3rem;
 	margin: 4rem 0 4rem 0;
 	background-color: #141718e7;
 }
 
 .Business-Hours .headline {
-	margin-bottom: 2.4rem;
+	margin-bottom: 1rem;
 }
 
 .Business-Hours .Button-Group {
@@ -40,10 +38,10 @@
 }
 
 
-@media screen and (min-width: 940px) {
+@media screen and (min-width: 501px) {
 	.Business-Hours {
-		height: 100%;
-		--res-scale: calc(4rem + ((100vw - 1300px) / 15));
-		padding: 4rem var(--res-scale) 2.5rem var(--res-scale)
+		/* height: 100%; */
+		/* --res-scale: calc(4rem + ((100vw - 1300px) / 15)); */
+		/* padding: 4rem var(--res-scale) 2.5rem var(--res-scale) */
 	}
 }

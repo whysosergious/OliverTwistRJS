@@ -13,8 +13,8 @@ import { StateProvider } from 'logic/kernel'
 ReactDOM.render(
 	<React.StrictMode>
 		<StateProvider>
-			<App />,
-		</StateProvider>,
+			<App />
+		</StateProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

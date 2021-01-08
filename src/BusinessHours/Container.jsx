@@ -1,31 +1,32 @@
 /**
  * Business hours component to display in multiple places
  */
-import React, { useContext, useState } from 'react';
+// import React, { useContext, useState } from 'react';
+import React from 'react';
 import './Container.css';
 
 // contexts
-import { kernel } from 'logic/kernel';
+// import { kernel } from 'logic/kernel';
 
 // components
 import Button from 'shared/Button';
 
 
 const BusinessHours = props => {
-	const [ states, setStates ] = useState(0);	// standard hook
+	// const [ states, setStates ] = useState(0);	// standard hook
 
 	// link component to context object
-	const { _gl } = useContext(kernel);
-	_gl.init([ 'BusinessHours', { set: setStates }]);
+	// const { _gl } = useContext(kernel);
+	// _gl.init([ 'BusinessHours', { set: setStates }]);
 
 
    return (
 		<div className="Business-Hours"
-			onClick={() => {
-				_gl.NewsContainer.set({
-					'buttonText': 'Yeeeey!!!'
-				});
-			}}
+			// onClick={() => {
+			// 	_gl.NewsContainer.set({
+			// 		'buttonText': 'Yeeeey!!!'
+			// 	});
+			// }}
 		>
 			<h2 className="headline" >Våra Öppettider</h2>
 			<div className="Day">
@@ -58,12 +59,12 @@ const BusinessHours = props => {
 			</div>
 
 			<div className="Button-Group">
-				<Button altClass="conditional minimal"
-					text={ states.btnTextReg || 'Regulära' }
+				<Button altClass="conditional small minimal"
+					text={ 'Regulära' }
 					textColor="white"
 				/>
-				<Button altClass="conditional minimal"
-					text={ states.btnTextExc || 'Avvikande' }
+				<Button altClass="conditional small minimal"
+					text={ 'Avvikande' }
 					// textColor="white"
 				/>
 			</div>

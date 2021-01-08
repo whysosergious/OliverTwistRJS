@@ -14,9 +14,8 @@ const hashTags = hashTagsArray.map((tag, index) => {
 });
 
 const NewsPost = props => {
-
    return (
-      <div className={ `News-Post` }>
+      <div className={ `News-Post ${ props.altClass }` } style={ props.style }>
 			<ImageWrapper />
 
 			<div className="News-Post-Content">

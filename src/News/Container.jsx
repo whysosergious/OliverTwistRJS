@@ -1,7 +1,8 @@
 /**
  * News from Instagram
  */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
+// import React from 'react';
 import './Container.css';
 
 // contexts
@@ -14,23 +15,25 @@ import Button from 'shared/Button';
 
 
 const NewsContainer = props => {
-	const [ states, setStates ] = useState(0);	// standard hook
+	// const [ states, setStates ] = useState(0);	// standard hook
 
 	// link component to context object
 	const { _gl } = useContext(kernel);
-	_gl.init([ 'NewsContainer', { set: setStates, status: states }]);
+	// _gl.init([ 'NewsContainer', { set: setStates, status: states }]);
 
 	const loadPosts = () => {
-		// console.log(_gl.PostGroup.count)
-		_gl.PostGroup.count += 4;
-		_gl.PostGroup.set({ int: _gl.PostGroup.count });
-		console.log(_gl.PostGroup.count)
+		_gl.PostGroup.set({ new: _gl.PostGroup.count + 4 });
 	}
 
+	const newsRef = useRef(null);
+
+	useEffect(() => {
+	}, [])
+
    return (
-      <section className="News-Container">
+      <section className="News-Container" ref={ newsRef }>
 			<div className="Heading-Group"
-				style={{ width: '80%', maxWidth: '30rem' }}
+				style={{ width: '80%', maxWidth: '30rem', marginBottom: '4rem' }}
 			>
 				<h1 className="dark">
 					<span>Senaste</span>Nyheter

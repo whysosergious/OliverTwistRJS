@@ -24,18 +24,22 @@
 	z-index: 1;
 }
 
-body {
-	position: relative;
+html {
+	--vh: 1vh;
+}
 
+body {
+	/* position: relative; */
+	/* height: 100vh; */
 	font-family: 'Signika', sans-serif;
 	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
 	background-color: #000;
-	z-index: 1;
+	overflow: hidden;
+	/* z-index: 1; */
 }
-
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;

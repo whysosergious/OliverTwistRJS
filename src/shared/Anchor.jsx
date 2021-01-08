@@ -18,7 +18,7 @@ const Anchor = props => {
 
 	if(!icon) return(null);
 
-	let textMargin = text ? { marginRight: '.6rem' } : null ;
+	let textMargin = text ? { marginRight: '.4rem' } : null ;
 	let iconSrc = altClass === 'icon'
 		?
 		<img src={ icon }
@@ -28,7 +28,7 @@ const Anchor = props => {
 		:
 		null;
 
-	console.log(icon)
+	// console.log(icon)
 
    return (
       <a className={ `Anchor ${ altClass }` }

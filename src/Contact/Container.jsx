@@ -40,31 +40,33 @@ const ContactContainer = props => {
 						<h2>
 							Kontakta oss
 						</h2>
-						<h4 className="Contact-Message light">
+						<h3 className="Contact-Message small light">
 							Har du frågor? Hesitera inte att höra av dig via telefon eller mejl! Boka bord gör du enkelt online för begränsad antal i sällskapet. För större sällskap ring eller mejla så ordnar vi det!
 							<p>
 								OBS! På grund av rådande begränsningar under pandemin kan vi inte ta emot sällskap med fler än fyra personer.
 							</p>
-						</h4>
+						</h3>
 						<Button altClass="minimal"
 							text="Boka bord online"
-							style={{ display: 'inline-block', margin: '3rem' }}
+							style={{ display: 'inline-block', margin: '4rem 0 2rem 0' }}
 						/>
-						<Anchor altClass="icon"
-							link="tel:+468-640 05 66"
-							text="08-640 05 66"
-							fileName="phone.svg"
-						/>
-						<Anchor altClass="icon"
-							link="mailto:restaurang@olivertwist.se"
-							text="restaurang@olivertwist.se"
-							fileName="email.svg"
-						/>
-						<Anchor altClass="icon"
-							link="google.com"
-							text="Repslagargatan 6, Södermalm"
-							fileName="pin.svg"
-						/>
+						<div className="Anchor-Group">
+							<Anchor altClass="icon"
+								link="tel:+468-640 05 66"
+								text="08-640 05 66"
+								fileName="phone.svg"
+							/>
+							<Anchor altClass="icon"
+								link="mailto:restaurang@olivertwist.se"
+								text="restaurang@olivertwist.se"
+								fileName="email.svg"
+							/>
+							<Anchor altClass="icon"
+								link="google.com"
+								text="Repslagargatan 6, Södermalm"
+								fileName="pin.svg"
+							/>
+						</div>
 					</div>
 				</div>
 				<div className="Business-Hours-Wrapper">

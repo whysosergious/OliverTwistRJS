@@ -14,7 +14,8 @@
 
 }
 .Contact-Message {
-	max-width: 40rem;
+	width: 90%;
+	max-width: 36rem;
 }
 
 .Contact-Group .overlay::after {
@@ -29,7 +30,7 @@
 	align-items: center;
 	justify-content: center;
 
-	height: 100%;
+	/* height: 100%; */
 	width: 100%;
 }
 section.Contact-Container {
@@ -56,17 +57,25 @@ section.Contact-Container {
 	opacity: .07;
 }
 
+.Anchor-Group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	max-width: 30rem;
+}
 
-@media screen and (min-width: 940px) {
+
+@media screen and (min-width: 501px) {
 	.Contact-Container {
 		flex-direction: row;
 	}
 
 	.Contact-Group {
-		width: 50%;
+		width: 60%;
 	}
 
 	.Contact-Container .Business-Hours-Wrapper {
-		width: 50%;
+		width: 40%;
 	}
 }

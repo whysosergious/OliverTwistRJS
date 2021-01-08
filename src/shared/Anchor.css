@@ -4,13 +4,13 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	height: 2.2rem;
+	height: 1.2rem;
 
-	margin-bottom: 2rem;
+	margin: .6rem;
 }
 
 .Anchor h4 {
-	font-size: 1.4rem;
+	/* font-size: 1rem; */
 }
 
 .Anchor img {

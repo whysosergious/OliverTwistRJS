@@ -17,14 +17,20 @@ section.accent {
 }
 
 .Heading-Group {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	width: 90%;
 	z-index: 2;
 }
 .Heading-Group.left {
+	align-items: flex-start;
 	text-align: left;
 	padding-right: 10%;
 }
 .Heading-Group.right {
+	align-items: flex-end;
 	text-align: right;
 	padding-left: 10%;
 }

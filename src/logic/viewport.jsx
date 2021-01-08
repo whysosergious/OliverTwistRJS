@@ -6,33 +6,63 @@ import React, { useContext, useEffect } from 'react';
 // contexts
 import { kernel } from 'logic/kernel';		// import our singleton
 
-var height, width = 0;
-var display = 1;
-var active = 0;
+
+
+
+const _local = {
+	height: window.innerHeight,
+	width: window.innerWidth,
+	device: 'mobile',
+	orientation: 'portrait',
+	linked: [],
+	link( f ) {
+		this.linked.push( f );
+	},
+	calc() {
+		this.height = window.innerHeight;
+		this.width = window.innerWidth;
+		this.device = this.width < 500 ? 'mobile' : this.width > 950 ? 'desctop' : 'pad' ;
+		this.orientation = this.height < this.width ? 'landscape' : 'portrait' ;
+	},
+	setVh() {
+		let vh = `${this.height / 100}px`;
+		document.documentElement.style.setProperty('--vh', vh);
+	},
+	trigger() {
+		this.linked.forEach(f => f());
+	},
+}
+_local.calc();
+var currentDevice = _local.device;
+// var currentOrientation = '';
 var tick = false;
 
 const ViewportLogic = props => {
-
 	// link component to context object
 	const { _gl } = useContext(kernel);
-	_gl.init([ 'Viewport', {
-		height: height,
-		width: width,
-	}]);
+	_gl.init([ 'Viewport', _local ]);
+
+	_local.setVh();
 
 	useEffect(() => {
+
 		const handleResize = event => {
-			display = (window.innerWidth > 500 && window.innerWidth < 950) ? 0 : 1 ;
-			if (!tick && display !== active) {
+
+			_local.calc();
+
+			// conditionallly trigger rerenders and functions in our componenets
+			if (!tick && _local.device !== currentDevice) {
+
+				// the frame request and tick are not required here but I want to throttle updates
 				window.requestAnimationFrame(() => {
-					console.log(display);
-					// _gl.PostGroup.set({ width: display });
+
+					_local.trigger();
+
 					tick = false;
-					active = display;
+					currentDevice = _local.device;
 				});
 				tick = true;
 			}
-
 		}
 
 		window.addEventListener( 'resize', handleResize );
