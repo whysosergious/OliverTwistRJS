@@ -3,6 +3,8 @@ import { useEffect, useState, useRef } from 'react';
 import './App.css';
 import './AppGeneral.css';
 
+import { createObserver, queueFrame } from 'logic/intersection-observer';
+
 // logic
 import { ViewportLogic } from 'logic/viewport';
 
@@ -19,9 +21,37 @@ import AboutContainer from './About/Container';
 import ContactContainer from './Contact/Container';
 import FooterContainer from './Footer/Container';
 
+
+
+/**
+ * Assigned handler with a properties object
+ * TODO!: Document props passed to this function and
+ * send all of them separately
+ * @param {*} props
+ */
+const handleNavIntersect = (props) => {
+	let { entry, prevRatio } = props;
+	let { boundingClientRect, intersectionRatio, target } = entry;
+
+	// Dealers choice
+	if (intersectionRatio > prevRatio) {
+		boundingClientRect.y > 10 && queueFrame(() => {
+			target.classList.remove('stuck');
+		});
+	} else {
+		boundingClientRect.y < 10 && queueFrame(() => {
+			target.classList.add('stuck');
+		});
+	}
+}
+
+
+
+
+
+
 var lastScrollPos = 0;
 var scrollTick = false;
-
 
 
 // elements and their offsets
@@ -40,61 +70,13 @@ let isInViewMethods = {
 	getPos() {	// get new ref offsets
 		this.offsetY = this.ref.offsetTop;
 	},
-	init( hook ) {		// initial method with hook assignment
+	init( key, state, dispatch ) {		// initial method with hook assignment
 		this.ref = this.ref.current;
-		this.state = hook[0];
-		this.set = hook[1];
+		this.ref.colKey = key[0];
+		this.state = state;
+		this.set = dispatch;
 		this.getPos();
 	},
-}
-
-
-const numSteps = 20.0;
-
-let prevRatio = 0.0;
-let increasingColor = "rgba(40, 40, 190, ratio)";
-let decreasingColor = "rgba(190, 40, 40, ratio)";
-const handleIntersect = ( entries, observer ) => {
-	// entries.forEach(e => console.log(e));
-	entries.forEach((entry) => {
-		console.log(entry)
-		if (entry.intersectionRatio > prevRatio) {
-			console.log(entry.intersectionRatio);
-		} else {
-			console.log(entry.intersectionRatio);
-		}
-
-		prevRatio = entry.intersectionRatio;
-	});
-}
-
-const buildThresholdList = () => {
-	let thresholds = [];
-	let numSteps = 20;
-
-	for (let i=1.0; i<=numSteps; i++) {
-	let ratio = i/numSteps;
-	thresholds.push(ratio);
-	}
-
-	thresholds.push(0);
-	return thresholds;
-}
-
-// intersection observer
-const createObserver = ( root ) => {
-	let observer;
-
-	let options = {
-		root: root,
-		rootMargin: "-4px",
-		threshold: buildThresholdList(),
-	};
-
-	observer = new IntersectionObserver(handleIntersect, options);
-	// console.log()
-	observer.observe(isInViewCol.navRef.ref);
-	// observer.observe(isInViewCol.promoRef.ref);
 }
 
 
@@ -111,11 +93,14 @@ export const useIsInView = (ref) => {
 		isInViewCol[key] = {};
 		Object.assign( isInViewCol[key], ref[key], isInViewMethods );
 
-		isInViewCol[key].init([ isInView, targetRef ]);
+		isInViewCol[key].init( key, isInView, targetRef );
 	}, []);
-	console.log(isInViewCol)
+	// console.log(isInViewCol)
 	return isInView;
 }
+
+
+
 
 var target = 0;
 
@@ -129,9 +114,10 @@ const App = () => {
 
 
 	useEffect(() => {
-
 		const main = mainRef.current;
-		createObserver( main );
+		createObserver( main, [ isInViewCol.navRef.ref, isInViewCol.promoRef.ref ], handleNavIntersect );
+
+
 		const handleScrollTriggers = (scrollPos) => {
 			isInViewCol.promoRef.set(true);
 			// isInViewCol.navRef.set(true);
@@ -144,6 +130,7 @@ const App = () => {
 			// 	col[array[target][1]].set();
 			// 	target--;
 			// }
+
 		}
 		const handleScroll = ( event ) => {
 

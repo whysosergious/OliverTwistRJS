@@ -3,29 +3,29 @@
 	font-size: 1.3rem;
 }
 .Business-Hours h2 {
-	font-size: 2rem;
+	font-size: 2.6rem;
 }
 
 .Business-Hours h3 {
-	font-size: .9rem;
+	font-size: 1.2rem;
 	line-height: .9rem;
 }
 
 .Business-Hours {
-	width: 20rem;
-	padding: 2rem 3rem 2rem 3rem;
+	width: 23rem;
+	padding: 3rem 3rem 3rem 3rem;
 	margin: 4rem 0 4rem 0;
 	background-color: #141718e7;
 }
 
 .Business-Hours .headline {
-	margin-bottom: 1rem;
+	margin-bottom: 2.4rem;
 }
 
 .Business-Hours .Button-Group {
 	justify-content: space-around;
 
-	margin-top: 3rem;
+	margin-top: 3.7rem;
 }
 
 .Day {
@@ -43,5 +43,42 @@
 		/* height: 100%; */
 		/* --res-scale: calc(4rem + ((100vw - 1300px) / 15)); */
 		/* padding: 4rem var(--res-scale) 2.5rem var(--res-scale) */
+	}
+	.Business-Hours button h2 {
+		font-size: 1.3rem;
+	}
+	.Business-Hours h2 {
+		font-size: 2rem;
+	}
+
+	.Business-Hours h3 {
+		font-size: .9rem;
+		line-height: .9rem;
+	}
+
+	.Business-Hours {
+		width: 20rem;
+		padding: 2rem 3rem 2rem 3rem;
+		margin: 4rem 0 4rem 0;
+		background-color: #141718e7;
+	}
+
+	.Business-Hours .headline {
+		margin-bottom: 1rem;
+	}
+
+	.Business-Hours .Button-Group {
+		justify-content: space-around;
+
+		margin-top: 3rem;
+	}
+
+	.Day {
+		display: flex;
+		flex-direction: row;
+		margin: 1.5rem 0;
+	}
+	.Day :nth-child(1) {
+		margin-right: auto;
 	}
 }

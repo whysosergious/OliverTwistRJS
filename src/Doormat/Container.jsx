@@ -20,7 +20,7 @@ const DoormatContainer = props => {
 		index: 2,
 	}
 	const isInView = useIsInView({ promoRef });
-	console.log({ isInView })
+	// console.log({ isInView })
 
    return (
 		<>

@@ -9,7 +9,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 27rem;
+	height: 37rem;
 	width: 100%;
 }
 
@@ -19,7 +19,7 @@
 	justify-content: space-evenly;
 	align-items: center;
 
-	height: 24rem;
+	height: 26rem;
 
 	padding-bottom: .3rem;
 }
@@ -28,7 +28,7 @@
 	.Menu-Container {
 		display: flex;
 		flex-direction: row;
-		height: 36rem;
+		height: 33rem;
 		padding: 0rem;
 	}
 

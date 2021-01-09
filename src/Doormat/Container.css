@@ -1,6 +1,7 @@
 .Promo-Container {
 	display: flex;
 	position: relative;
+	padding: 8rem 0;
 }
 
 .Promo-Container::after {
@@ -39,20 +40,20 @@
 }
 
 .Promo-Container .Heading-Group {
-	width: 80%;
+	width: 94%;
 	max-width: 40rem;
 }
 
 .Doormat-Container {
 	position: relative;
-	padding: 8rem 0;
+	padding: 10rem 0;
 }
 
 .Doormat-Container .Heading-Group {
-	padding-right: 25%;
+	padding-right: 20%;
 }
 .Doormat-Container h2 {
-	max-width: 18rem;
+	max-width: 100%;
 }
 .Doormat-Container h3 {
 	max-width: 24rem;
@@ -71,9 +72,13 @@
 		justify-content: space-evenly;
 		/* height: 37rem; */
 	}
+	.Doormat-Container {
+		padding: 8rem 0;
+	}
+	.Doormat-Container h2 {
+		max-width: 27rem;
 
-
-
+	}
 	.Promo-Group h3 {
 		/* font-weight: 600; */
 		margin-bottom: 2rem;
@@ -81,8 +86,8 @@
 	}
 
 	.Doormat-Container .Heading-Group {
-		width: 75%;
-		padding-right: 15%;
+		width: 72%;
+		padding-right: 35%;
 	}
 	.Doormat-Container h3 {
 		max-width: 25rem;

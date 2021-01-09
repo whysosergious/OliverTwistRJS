@@ -9,8 +9,8 @@ button {
 	text-decoration: none;
 	line-height: 100%;
 	height: max-content;
-	width: 16rem;
-   padding: .8rem 0;
+	width: 12rem;
+   padding: .7rem 0;
    -webkit-appearance: none;
    -moz-appearance: none;
 
@@ -27,7 +27,7 @@ button h2 {
 	justify-content: center;
 	align-items: center;
 
-	font-size: 2.6rem;
+	font-size: 2rem;
 
 	height: 100%;
 	width: 100%;
@@ -88,13 +88,16 @@ button.minimal {
 	width: unset;
 }
 button.minimal h2 {
-	font-size: 2.6rem;
+	font-size: 2.4rem;
 	letter-spacing: .05rem;
 	color: var(--txt-acc);
 
 	padding-bottom: .2rem;
 
 	border-bottom: .24rem solid var(--txt-acc);
+}
+button.minimal.small h2 {
+	font-size: 1.6rem;
 }
 
 button.plain {

@@ -19,10 +19,10 @@ const Navigation = props => {
 		index: 1,
 	}
 	const isInView = useIsInView({ navRef });
-	console.log(isInView)
+	// console.log(isInView)
 
    return (
-      <nav ref={ navRef.ref }>
+      <nav className={ isInView ? 'stuck' : '' } ref={ navRef.ref }>
 
 			<div className="Section-Links">
 				<Button altClass="plain"
