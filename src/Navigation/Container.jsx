@@ -1,9 +1,11 @@
 /**
  *	Navigation menu
  */
-import React, { useEffect, useState, useRef } from 'react';
-import { useIsInView } from 'App';
+import React, { useRef } from 'react';
 import './Container.css';
+
+// zergski logic
+import { useGlobalAccess } from 'logic/zergski-global-access';
 
 // media
 // import menuImage from 'ass/img/menu.jpg';
@@ -13,16 +15,17 @@ import Button from 'shared/Button';
 // import ImageWrapper from 'shared/ImageWrapper';
 
 const Navigation = props => {
-
-	const navRef = {
+	const nav = {
 		ref: useRef(null),
 		index: 1,
 	}
-	const isInView = useIsInView({ navRef });
-	// console.log(isInView)
+	// we save our reference to global and get a callback with an individual hook state
+	// that we can set from all components that import 'global-access' collection
+	const linkedState = useGlobalAccess({ nav });
+	console.log(linkedState)
 
    return (
-      <nav className={ isInView ? 'stuck' : '' } ref={ navRef.ref }>
+      <nav className={ linkedState ? 'stuck' : '' } ref={ nav.ref }>
 
 			<div className="Section-Links">
 				<Button altClass="plain"

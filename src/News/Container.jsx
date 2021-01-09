@@ -2,8 +2,10 @@
  * News from Instagram
  */
 import React, { useContext, useEffect, useRef } from 'react';
-// import React from 'react';
 import './Container.css';
+
+// zergski logic
+import { useGlobalAccess } from 'logic/zergski-global-access';
 
 // contexts
 import { kernel } from 'logic/kernel';		// import our singleton
@@ -15,6 +17,14 @@ import Button from 'shared/Button';
 
 
 const NewsContainer = props => {
+	const news = {
+		ref: useRef(null),
+		index: 2,
+	}
+	const linkedState = useGlobalAccess({ news });
+
+
+
 	// const [ states, setStates ] = useState(0);	// standard hook
 
 	// link component to context object
@@ -31,7 +41,7 @@ const NewsContainer = props => {
 	}, [])
 
    return (
-      <section className="News-Container" ref={ newsRef }>
+      <section className="News-Container" ref={ news.ref }>
 			<div className="Heading-Group"
 				style={{ width: '80%', maxWidth: '30rem', marginBottom: '4rem' }}
 			>

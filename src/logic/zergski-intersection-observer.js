@@ -2,6 +2,7 @@
  * Intersection Observer for animation module
  * with global hooks
  */
+import { globalAccess } from 'logic/zergski-global-access';
 
 
 var rafTick = false;
@@ -51,8 +52,9 @@ const buildThresholdList = ( steps ) => {
 	return thresholds;
 }
 
+
 // intersection observer
-const createObserver = ( root, target, handler, options, thresholdSteps=20, originalHanler=false ) => {
+const createObserver = ( root, target, handler, options, thresholdSteps=20, originalHandler=false ) => {
 	let observer;
 
 	let ModulOptions = {
@@ -69,22 +71,23 @@ const createObserver = ( root, target, handler, options, thresholdSteps=20, orig
 	 * @param {*} observer
 	 */
 	const ModulHandleIntersect = ( entries, observer ) => {
-		entries.forEach( entry => {
-			let { colKey } = entry.target;
-			let prevRatio = ObserverTargets[colKey].prevRatio;
 
-			ObserverTargets[colKey].prevRatio = entry.intersectionRatio;
-			return ObserverTargets[colKey].handler({ entry, observer, colKey, prevRatio, entries });
+		entries.forEach( entry => {
+			let { zKey } = entry.target;
+			let prevRatio = ObserverTargets[zKey].prevRatio;
+
+			ObserverTargets[zKey].prevRatio = entry.intersectionRatio;
+			return ObserverTargets[zKey].handler({ entry, observer, zKey, prevRatio, entries });
 		});
 	}
 
-	observer = new IntersectionObserver( originalHanler ? handler : ModulHandleIntersect , options || ModulOptions );
+	observer = new IntersectionObserver( originalHandler ? handler : ModulHandleIntersect , options || ModulOptions );
 
 	// creating separate object for each target
 	var targetArray = Array.isArray( target ) ? target : [ target ];
 	targetArray.forEach( tgt => {
 		observer.observe( tgt );
-		ObserverTargets[tgt.colKey] = new TargetClass( target, handler );
+		ObserverTargets[tgt.zKey] = new TargetClass( target, handler );
 	});
 }
 
@@ -97,7 +100,7 @@ export { createObserver };
  * NOTES **
  *
  * target.classList.add('stuck');
- * isInViewCol[colKey].set(true);	// hooks were less performant by almost half(53ms in just scripting)
+ * isInViewCol[zKey].set(true);	// hooks were less performant by almost half(53ms in just scripting)
  * of course refs should be used sparingly. But mixing css & js animation is freaking great!!
  * plus! intersectionObserver completely eliminates the nedd to handle event listeners..
  * Not that event listeneres don't have their use anymore.

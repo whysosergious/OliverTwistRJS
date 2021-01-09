@@ -1,8 +1,11 @@
 /**
  * About, collaboration and import
  */
-import React from 'react';
+import React, { useRef } from 'react';
 import './Container.css';
+
+// zergski logic
+import { useGlobalAccess } from 'logic/zergski-global-access';
 
 // media
 import repslagarBackground from 'ass/vector/files/entrance.svg';
@@ -15,9 +18,16 @@ import caskAleImage from 'ass/img/about/cask-ale.jpg';
 import ImageWrapper from 'shared/ImageWrapper';
 
 const AboutContainer = props => {
+	const about = {
+		ref: useRef(null),
+		index: 5,
+	}
+	const linkedState = useGlobalAccess({ about });
+	console.log(linkedState)
+
    return (
 		<>
-			<section className="About-Container"
+			<section className="About-Container" ref={ about.ref }
 				style={{ position: 'relative', paddingBottom: '12rem' }}
 			>
 				<ImageWrapper imgSrc={ repslagarBackground }

@@ -10,7 +10,7 @@ button {
 	line-height: 100%;
 	height: max-content;
 	width: 12rem;
-   padding: .7rem 0;
+   padding: .6rem 0;
    -webkit-appearance: none;
    -moz-appearance: none;
 
@@ -105,7 +105,7 @@ button.plain {
 	border: none
 }
 button.plain h2 {
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 }
 
 /* call to action */
@@ -138,18 +138,21 @@ button.cta h2 {
 
 @media screen and (min-width: 501px) {
 	button {
-		width: 12rem;
-		padding: .4rem 0;
+		width: 10rem;
+		padding: .3rem 0;
 		border-width: .17rem;
 	}
 	button h2 {
-		font-size: 1.8rem;
+		font-size: 1.4rem;
+
 	}
 
 	button.minimal h2 {
 		font-size: 2rem;
 	}
 	button.minimal.small h2 {
-		font-size: 1.4rem;
+		position: relative;
+		font-size: 1.2rem;
+		bottom: .2rem;
 	}
 }

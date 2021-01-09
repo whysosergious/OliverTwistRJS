@@ -1,8 +1,11 @@
 /**
  * Contact, opening hours and Google maps
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Container.css';
+
+// zergski logic
+import { useGlobalAccess } from 'logic/zergski-global-access';
 
 // media
 import cornerImage from 'ass/img/contact/corner.jpg';
@@ -18,6 +21,11 @@ import Anchor from 'shared/Anchor';
 
 
 const ContactContainer = props => {
+	const contact = {
+		ref: useRef(null),
+		index: 6,
+	}
+	const linkedState = useGlobalAccess({ contact });
 
 	const [ map, setMap ] = useState(null);
 
@@ -28,7 +36,7 @@ const ContactContainer = props => {
 
    return (
 		<>
-			<section className="Contact-Container dark"
+			<section className="Contact-Container dark" ref={ contact.ref }
 				style={{ padding: '0' }}
 			>
 				<div className="Contact-Group">

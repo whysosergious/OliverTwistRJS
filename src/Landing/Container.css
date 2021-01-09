@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: calc(100% - 3rem);
+	min-height: calc(100 * var(--vh));
 	height: max-content;
 	background-color: #000;
 }
@@ -46,7 +46,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		min-height: calc(100% - 3rem);
+		min-height: calc(100 * var(--vh) - 3rem);
 		height: max-content;
 		background-color: #000;
 	}

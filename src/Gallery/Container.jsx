@@ -1,8 +1,11 @@
 /**
  * Image Gallery
  */
-import React from 'react';
+import React, { useRef } from 'react';
 import './Container.css';
+
+// zergski logic
+import { useGlobalAccess } from 'logic/zergski-global-access';
 
 //media
 import tempImage1 from 'ass/img/gallery/gal-temp1.jpg';
@@ -20,8 +23,14 @@ import ImageWrapper from 'shared/ImageWrapper';
 import Button from 'shared/Button';
 
 const GalleryContainer = props => {
+	const gallery = {
+		ref: useRef(null),
+		index: 3,
+	}
+	const linkedState = useGlobalAccess({ gallery });
+
    return (
-      <section className="Gallery-Container dark">
+      <section className="Gallery-Container dark" ref={ gallery.ref }>
 			<h1>
 				Bildgalleri
 			</h1>

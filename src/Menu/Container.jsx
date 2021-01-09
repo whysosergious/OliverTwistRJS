@@ -1,9 +1,12 @@
 /**
  * Menues and specials
  */
-import React from 'react';
+import React, { useRef } from 'react';
 import './Container.css';
 import Button from 'shared/Button';
+
+// zergski logic
+import { useGlobalAccess } from 'logic/zergski-global-access';
 
 // media
 import menuImage from 'ass/img/menu.jpg';
@@ -12,10 +15,17 @@ import menuImage from 'ass/img/menu.jpg';
 import ImageWrapper from 'shared/ImageWrapper';
 
 const MenuContainer = props => {
+	const menu = {
+		ref: useRef(null),
+		index: 4,
+	}
+	const linkedState = useGlobalAccess({ menu });
+	console.log(linkedState)
+
    return (
       <section className="Menu-Container accent">
 
-			<div className="Menu-Group">
+			<div className="Menu-Group" ref={ menu.ref }>
 				<ImageWrapper imgSrc= { menuImage }
 					imgDesc="A la carté risotto rätt"
 					altClass="background overlay"

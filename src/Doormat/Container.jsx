@@ -2,8 +2,10 @@
  * Promotion and introductory content
  */
 import React, { useRef, createRef, useEffect, useState } from 'react';
-import { useIsInView } from 'App';
 import './Container.css';
+
+// zergski logic
+import { useGlobalAccess } from 'logic/zergski-global-access';
 
 // media
 import promoBackgroundImage from 'ass/img/promo/waob.jpg';
@@ -15,16 +17,21 @@ import Button from 'shared/Button';
 import ImageWrapper from 'shared/ImageWrapper';
 
 const DoormatContainer = props => {
-	const promoRef = {
+	const promo = {
 		ref: useRef(null),
 		index: 2,
 	}
-	const isInView = useIsInView({ promoRef });
-	// console.log({ isInView })
+	const doormat = {
+		ref: useRef(null),
+		index: 3,
+	}
+	const linkedPromo = useGlobalAccess({ promo });
+	const linkedDoormat = useGlobalAccess({ doormat });
+
 
    return (
 		<>
-			<section className="Promo-Container accent" ref={ promoRef.ref }>
+			<section className={ `${ linkedPromo ? '' : '' } Promo-Container accent` } ref={ promo.ref }>
 				<ImageWrapper imgSrc={ promoBackgroundImage }
 					imgDesc="World Atlas of Beer guide 2021 edition by Timm Webb and Stephen Beumont"
 					altClass="background"
@@ -48,7 +55,7 @@ const DoormatContainer = props => {
 					altClass="Article-Image"
 				/> */}
 			</section>
-			<section className="Doormat-Container dark" >
+			<section className={ `${ linkedDoormat ? '' : '' } Doormat-Container dark` } ref={ doormat.ref }>
 				<ImageWrapper imgSrc={ doormatBackgroundImage }
 					imgDesc="Shelves with beer cans in the bars fridge"
 					altClass="background"
