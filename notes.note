@@ -32,7 +32,7 @@ ot google place placeId
 ChIJF4VOz-R3X0YRz6NqrPjre3k
 
 
-
+// setState(stateChange[, callback])	// state with callback
 
 
 
@@ -40,7 +40,7 @@ ChIJF4VOz-R3X0YRz6NqrPjre3k
 old map styles
 
 
-
+// forceUpdate();
 
 
 	//---- google map

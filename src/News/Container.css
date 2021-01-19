@@ -1,4 +1,5 @@
-.News-Post-Container {
+.News-Post-Container,
+.Post-Group {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -41,7 +42,7 @@
 }
 
 @media screen and (min-width: 951px) {
-	.News-Post-Container {
+	.Post-Group {
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-evenly;

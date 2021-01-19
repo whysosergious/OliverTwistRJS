@@ -83,12 +83,12 @@ button.menu h2 {
 
 
 /* minimalistic */
-button.minimal {
+button.underline {
 	border: none;
 	width: unset;
 }
-button.minimal h2 {
-	font-size: 2.4rem;
+button.underline h2 {
+	font-size: 2.2rem;
 	letter-spacing: .05rem;
 	color: var(--txt-acc);
 
@@ -96,16 +96,16 @@ button.minimal h2 {
 
 	border-bottom: .24rem solid var(--txt-acc);
 }
-button.minimal.small h2 {
-	font-size: 1.6rem;
+button.underline.small h2 {
+	font-size: 1.3rem;
 }
 
-button.plain {
+button.minimal {
 
 	border: none
 }
-button.plain h2 {
-	font-size: 1.3rem;
+button.minimal h2 {
+	font-size: 1.4rem;
 }
 
 /* call to action */
@@ -147,10 +147,10 @@ button.cta h2 {
 
 	}
 
-	button.minimal h2 {
+	button.underline h2 {
 		font-size: 2rem;
 	}
-	button.minimal.small h2 {
+	button.underline.small h2 {
 		position: relative;
 		font-size: 1.2rem;
 		bottom: .2rem;

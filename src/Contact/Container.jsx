@@ -5,7 +5,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import './Container.css';
 
 // zergski logic
-import { useGlobalAccess } from 'logic/zergski-global-access';
+import { useGlobalObj } from 'logic/zergski-global-object';
 
 // media
 import cornerImage from 'ass/img/contact/corner.jpg';
@@ -25,13 +25,7 @@ const ContactContainer = props => {
 		ref: useRef(null),
 		index: 6,
 	}
-	const linkedState = useGlobalAccess({ contact });
-
-	const [ map, setMap ] = useState(null);
-
-	useEffect(() => {
-
-	}, []);
+	const [ state, setState ] = useGlobalObj({ contact }, 'sections');
 
 
    return (
@@ -54,7 +48,7 @@ const ContactContainer = props => {
 								OBS! På grund av rådande begränsningar under pandemin kan vi inte ta emot sällskap med fler än fyra personer.
 							</p>
 						</h3>
-						<Button altClass="minimal"
+						<Button altClass="underline"
 							text="Boka bord online"
 							style={{ display: 'inline-block', margin: '4rem 0 2rem 0' }}
 						/>
@@ -85,9 +79,9 @@ const ContactContainer = props => {
 
 			{/* try doing this in a separate component, might minimize rerenders */}
 			<section className="Map-Container"
-				onClick={ e => setMap(<GoogleMap />) }
+				onClick={ e => setState(<GoogleMap />) }
 			>
-				{ map }
+				{ state }
 			</section>
 
 		</>

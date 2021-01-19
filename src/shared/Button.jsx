@@ -4,11 +4,10 @@
 import React from 'react';
 import './Button.css';
 
-const Button = props => {
-	const { text, altClass, style, textColor, action } = props;
+const Button = ({ text, altClass, style, textColor, clicked }) => {
 
 	const handleClick = () => {
-		action();
+		clicked();
 	}
 
    return (

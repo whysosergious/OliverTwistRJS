@@ -103,3 +103,8 @@ p {
 		line-height: 1.25rem;
 	}
 }
+
+h1, h2, h3, h4, button {
+	transition: opacity .4s ease, transform .6s ease-out;
+	will-change: opacity, transform;
+}

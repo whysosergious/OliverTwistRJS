@@ -5,7 +5,7 @@ import React, { useRef } from 'react';
 import './Container.css';
 
 // zergski logic
-import { useGlobalAccess } from 'logic/zergski-global-access';
+import { useGlobalObj } from 'logic/zergski-global-object';
 
 // media
 // import menuImage from 'ass/img/menu.jpg';
@@ -21,26 +21,25 @@ const Navigation = props => {
 	}
 	// we save our reference to global and get a callback with an individual hook state
 	// that we can set from all components that import 'global-access' collection
-	const linkedState = useGlobalAccess({ nav });
-	console.log(linkedState)
+	const [ linkedState, setLinkedState ] = useGlobalObj({ nav }, 'sections');
 
    return (
       <nav className={ linkedState ? 'stuck' : '' } ref={ nav.ref }>
 
 			<div className="Section-Links">
-				<Button altClass="plain"
+				<Button altClass="minimal"
 					text="Nyheter"
 				/>
-				<Button altClass="plain"
+				<Button altClass="minimal"
 					text="Galleri"
 				/>
-				<Button altClass="plain"
+				<Button altClass="minimal"
 					text="Meny"
 				/>
-				<Button altClass="plain"
+				<Button altClass="minimal"
 					text="Om oss"
 				/>
-				<Button altClass="plain"
+				<Button altClass="minimal"
 					text="Kontakt"
 				/>
 			</div>

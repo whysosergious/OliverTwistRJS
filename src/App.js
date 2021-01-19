@@ -5,7 +5,7 @@ import './AppGeneral.css';
 
 // zergski logic
 import { createObserver, queueFrame } from 'logic/zergski-intersection-observer';
-import { globalAccess } from 'logic/zergski-global-access';
+import { globalObj } from 'logic/zergski-global-object';
 
 
 // logic
@@ -24,6 +24,9 @@ import AboutContainer from './About/Container';
 import ContactContainer from './Contact/Container';
 import FooterContainer from './Footer/Container';
 
+// Modals
+import MediaViewer from 'modals/MediaViewer';
+
 
 
 /**
@@ -32,20 +35,20 @@ import FooterContainer from './Footer/Container';
  * send all of them separately
  * @param {*} props
  */
-const handleNavIntersect = (props) => {
-	let { entry, prevRatio } = props;
+const handleNavIntersect = ({ entry, prevRatio }) => {
 	let { boundingClientRect, intersectionRatio, target } = entry;
 	// console.log(entry.boundingClientRect.y)
-	if ( entry.isIntersecting && entry.boundingClientRect.y < 100 ) {
-		console.log(entry.target.zKey);
+	if ( entry.isIntersecting && entry.boundingClientRect.y > 100 ) {
+
+		target.zEl.setState( true );
 	}
 	// Dealers choice
 	if (intersectionRatio > prevRatio) {
-		boundingClientRect.y > 10 && queueFrame(() => {
+		target.zkey === 'nav' && boundingClientRect.y > 10 && queueFrame(() => {
 			target.classList.remove('stuck');
 		});
 	} else {
-		boundingClientRect.y < 10 && queueFrame(() => {
+		target.zkey === 'nav' && boundingClientRect.y < 10 && queueFrame(() => {
 			target.classList.add('stuck');
 		});
 	}
@@ -63,11 +66,11 @@ const App = () => {
 	useEffect(() => {
 		// for the global object to be accessible through import, it has to be initialized
 		// after a 'componentDidMount' or 'useEffect' in that componenet
-		const { nav, promo, doormat, news, gallery, about, contact } = globalAccess;
+		const { sections } = globalObj;
 		main.ref = main.ref.current;
 
 		// all you need to create an intersectionObserver
-		// a reference of to the observer, in our care
+		// a reference of to the observer, in our case
 		// the root element
 		var root = {
 			ref: rootRef,
@@ -76,16 +79,7 @@ const App = () => {
 
 		createObserver (
 				root.ref,	// observer
-			[
-				//	target references can be passed into an array
-				nav.ref,
-				promo.ref,
-				doormat.ref,
-				news.ref,
-				gallery.ref,
-				about.ref,
-				contact.ref,
-			],
+				Object.values(sections).map( e => { return e.ref }),
 				handleNavIntersect	// callback function
 		);
 	}, []);
@@ -105,6 +99,8 @@ const App = () => {
 			<AboutContainer />
 			<ContactContainer />
 			<FooterContainer />
+
+			<MediaViewer />
 		</main>
 	);
 }

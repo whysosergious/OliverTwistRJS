@@ -34,6 +34,7 @@ const Anchor = props => {
       <a className={ `Anchor ${ altClass }` }
 			style={ style }
 			href={ link }
+			onClick={ props.clicked }
 		>
 			{ iconSrc }
 			<h4>{ text }</h4>

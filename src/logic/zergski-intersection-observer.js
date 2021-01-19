@@ -2,7 +2,7 @@
  * Intersection Observer for animation module
  * with global hooks
  */
-import { globalAccess } from 'logic/zergski-global-access';
+import { globalObj } from 'logic/zergski-global-object';
 
 
 var rafTick = false;
@@ -60,7 +60,7 @@ const createObserver = ( root, target, handler, options, thresholdSteps=20, orig
 	let ModulOptions = {
 		delay: 0,
 		root: root,
-		rootMargin: ['-10px 0px 10px 0px'],
+		rootMargin: ['-10px 0px -15% 0px'],
 		threshold: buildThresholdList(thresholdSteps),
 	};
 
@@ -71,7 +71,6 @@ const createObserver = ( root, target, handler, options, thresholdSteps=20, orig
 	 * @param {*} observer
 	 */
 	const ModulHandleIntersect = ( entries, observer ) => {
-
 		entries.forEach( entry => {
 			let { zKey } = entry.target;
 			let prevRatio = ObserverTargets[zKey].prevRatio;

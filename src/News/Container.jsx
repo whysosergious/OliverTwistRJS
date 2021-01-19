@@ -1,48 +1,40 @@
 /**
- * News from Instagram
+ * News synced to Instagram
  */
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Container.css';
 
 // zergski logic
-import { useGlobalAccess } from 'logic/zergski-global-access';
-
-// contexts
-import { kernel } from 'logic/kernel';		// import our singleton
+import { globalObj, useGlobalObj } from 'logic/zergski-global-object';
 
 // components
 import PostGroup from './PostGroup';
 import Button from 'shared/Button';
 
 
+let count = 0;
+let posts = [ <PostGroup key={ count } index={ count } /> ];
 
 const NewsContainer = props => {
 	const news = {
 		ref: useRef(null),
 		index: 2,
+		initialState: { display: 'idle bottom' },
 	}
-	const linkedState = useGlobalAccess({ news });
-
-
-
-	// const [ states, setStates ] = useState(0);	// standard hook
-
-	// link component to context object
-	const { _gl } = useContext(kernel);
-	// _gl.init([ 'NewsContainer', { set: setStates, status: states }]);
+	const [ state, setState ] = useGlobalObj({ news }, 'sections');
 
 	const loadPosts = () => {
-		_gl.PostGroup.set({ new: _gl.PostGroup.count + 4 });
+		posts[++count] = <PostGroup key={ count } index={ count } />;
+		setState(count);
 	}
 
-	const newsRef = useRef(null);
-
 	useEffect(() => {
+		// loadPosts();
 	}, [])
 
    return (
-      <section className="News-Container" ref={ news.ref }>
-			<div className="Heading-Group"
+      <section className={ `News-Container` } ref={ news.ref }>
+			<div className={ `Heading-Group ${ state.display || '' }` }
 				style={{ width: '80%', maxWidth: '30rem', marginBottom: '4rem' }}
 			>
 				<h1 className="dark">
@@ -54,14 +46,14 @@ const NewsContainer = props => {
 			</div>
 
 			<div className="News-Post-Container">
-				<PostGroup />
+				{ posts }
 			</div>
 
 			<Button altClass="dark"
 				style={{ marginTop: '7rem' }}
-				text={ 'Ladda fler' }	// conditional state
+				text={ 'Ladda fler' }
 
-				action={ loadPosts }
+				clicked={ loadPosts }
 			/>
       </section>
    );

@@ -5,7 +5,7 @@ import React, { useRef, createRef, useEffect, useState } from 'react';
 import './Container.css';
 
 // zergski logic
-import { useGlobalAccess } from 'logic/zergski-global-access';
+import { useGlobalObj } from 'logic/zergski-global-object';
 
 // media
 import promoBackgroundImage from 'ass/img/promo/waob.jpg';
@@ -20,18 +20,20 @@ const DoormatContainer = props => {
 	const promo = {
 		ref: useRef(null),
 		index: 2,
+		initialState: 'idle bottom',
 	}
 	const doormat = {
 		ref: useRef(null),
 		index: 3,
+		initialState: 'idle right',
 	}
-	const linkedPromo = useGlobalAccess({ promo });
-	const linkedDoormat = useGlobalAccess({ doormat });
+	const [ promoState, setPromoState ] = useGlobalObj({ promo }, 'observerAnimated');
+	const [ doormatState, setDoormatState ] = useGlobalObj({ doormat }, 'observerAnimated');
 
 
    return (
 		<>
-			<section className={ `${ linkedPromo ? '' : '' } Promo-Container accent` } ref={ promo.ref }>
+			<section className={ `Promo-Container accent ${ promoState }` } ref={ promo.ref }>
 				<ImageWrapper imgSrc={ promoBackgroundImage }
 					imgDesc="World Atlas of Beer guide 2021 edition by Timm Webb and Stephen Beumont"
 					altClass="background"
@@ -43,7 +45,7 @@ const DoormatContainer = props => {
 					<h3>
 						I den nya utgåvan av World Atlas of Beer för 2021 så smiter en sylta på Repslagargatan in på deras 10 i topp lista över världens bästa ställen att dricka öl på!
 					</h3>
-					<Button altClass="minimal"
+					<Button altClass="underline"
 						text="Läs mer"
 						style={{ marginTop: '3rem' }}
 					/>
@@ -55,7 +57,7 @@ const DoormatContainer = props => {
 					altClass="Article-Image"
 				/> */}
 			</section>
-			<section className={ `${ linkedDoormat ? '' : '' } Doormat-Container dark` } ref={ doormat.ref }>
+			<section className={ `Doormat-Container dark ${ doormatState }` } ref={ doormat.ref }>
 				<ImageWrapper imgSrc={ doormatBackgroundImage }
 					imgDesc="Shelves with beer cans in the bars fridge"
 					altClass="background"
@@ -70,7 +72,7 @@ const DoormatContainer = props => {
 					<h3 className="small">
 						På fat har vi 23 olika öl som roterar med sorter från världens bästa bryggerier. Bland våra 180+ olika flasköl, även där med ett alternerande sortiment, hittar du precis det du letar efter. Vi har nåt för alla.
 					</h3>
-					<Button altClass="minimal small"
+					<Button altClass="underline small"
 						text="Läs våran meny"
 						style={{ marginTop: '2rem' }}
 					/>

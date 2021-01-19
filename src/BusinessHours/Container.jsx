@@ -59,11 +59,11 @@ const BusinessHours = props => {
 			</div>
 
 			<div className="Button-Group">
-				<Button altClass="conditional small minimal"
+				<Button altClass="conditional small underline"
 					text={ 'Regulära' }
 					textColor="white"
 				/>
-				<Button altClass="conditional small minimal"
+				<Button altClass="conditional small underline"
 					text={ 'Avvikande' }
 					// textColor="white"
 				/>

@@ -6,7 +6,7 @@ import './Container.css';
 import Button from 'shared/Button';
 
 // zergski logic
-import { useGlobalAccess } from 'logic/zergski-global-access';
+import { useGlobalObj } from 'logic/zergski-global-object';
 
 // media
 import menuImage from 'ass/img/menu.jpg';
@@ -18,12 +18,12 @@ const MenuContainer = props => {
 	const menu = {
 		ref: useRef(null),
 		index: 4,
+		initialState: 'idle bottom',
 	}
-	const linkedState = useGlobalAccess({ menu });
-	console.log(linkedState)
+	const [ state, setState ] = useGlobalObj({ menu }, 'sections');
 
    return (
-      <section className="Menu-Container accent">
+      <section className={ `Menu-Container accent ${ state }` }>
 
 			<div className="Menu-Group" ref={ menu.ref }>
 				<ImageWrapper imgSrc= { menuImage }

@@ -5,7 +5,7 @@ import React, { useRef } from 'react';
 import './Container.css';
 
 // zergski logic
-import { useGlobalAccess } from 'logic/zergski-global-access';
+import { useGlobalObj } from 'logic/zergski-global-object';
 
 // media
 import repslagarBackground from 'ass/vector/files/entrance.svg';
@@ -22,8 +22,7 @@ const AboutContainer = props => {
 		ref: useRef(null),
 		index: 5,
 	}
-	const linkedState = useGlobalAccess({ about });
-	console.log(linkedState)
+	const [ state, setState ] = useGlobalObj({ about }, 'sections');
 
    return (
 		<>

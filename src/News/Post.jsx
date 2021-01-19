@@ -1,7 +1,8 @@
 /**
  * News post component
  */
-import React from 'react';
+import React, { useRef } from 'react';
+import { useGlobalObj } from 'logic/zergski-global-object';
 
 // components
 import ImageWrapper from 'shared/ImageWrapper';
@@ -13,9 +14,18 @@ const hashTags = hashTagsArray.map((tag, index) => {
 	return <h5 className="Hash-Tag" key={ index }>{ tag }</h5>;
 });
 
-const NewsPost = props => {
+
+
+const NewsPost = ({ index }) => {
+	const post = {
+		ref: useRef(null),
+		index: index,
+		initialState: 'idle bottom',
+	}
+	const [ state ] = useGlobalObj({ [`post${index}`]: post }, 'observerAnimated');
+
    return (
-      <div className={ `News-Post ${ props.altClass }` } style={ props.style }>
+      <div className={ `News-Post` } ref={ post.ref }>
 			<ImageWrapper />
 
 			<div className="News-Post-Content">
