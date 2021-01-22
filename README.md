@@ -1,3 +1,1 @@
 # OliverTwistRJS
-
-ReactJS project
