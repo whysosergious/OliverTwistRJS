@@ -7,7 +7,7 @@ const ImageWrapper = ({ imgSrc, imgDesc, altClass, style, clicked, index }) => {
 
    return (
       <div className={ `Image-Wrapper ${ altClass }` }
-			style= { style }
+			style={ style }
 			onClick={ ()=>clicked(index) }
 
 		>

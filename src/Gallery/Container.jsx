@@ -24,19 +24,19 @@ import Button from 'shared/Button';
 
 const GalleryContainer = props => {
 	// deconstructing
-	const { mediaViewer } = globalObj;
+	const { MediaViewer } = globalObj;
 
-	const gallery = {
+	const Gallery = {
 		ref: useRef(null),
 		index: 3,
 	}
-	const [ state, setState ] = useGlobalObj({ gallery }, 'sections');
+	const [ state, setState ] = useGlobalObj({ Gallery }, 'Sections');
 	const handleClick = index => {
-		mediaViewer.setState({ display: 'show', index });
+		MediaViewer.setState({ display: 'show', index });
 	}
 
    return (
-      <section className="Gallery-Container dark" ref={ gallery.ref }>
+      <section className="Gallery-Container dark" ref={ Gallery.ref }>
 			<h1>
 				Bildgalleri
 			</h1>

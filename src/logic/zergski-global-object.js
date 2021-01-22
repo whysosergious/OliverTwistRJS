@@ -17,6 +17,7 @@ const globalObjMethods = {
 	init( group, key, state, dispatch ) {		// initial method with hook assignment
 		if ( this.ref ) {
 			this.ref = this.ref.current; 	// element reference
+			this.ref.zKey = key[0];
 			this.ref.zEl = this;		// for easy pairing and execution of dispatch with observer ***check memory usage***
 			this.getPos();
 		}

@@ -15,17 +15,17 @@ import menuImage from 'ass/img/menu.jpg';
 import ImageWrapper from 'shared/ImageWrapper';
 
 const MenuContainer = props => {
-	const menu = {
+	const Menu = {
 		ref: useRef(null),
 		index: 4,
 		initialState: 'idle bottom',
 	}
-	const [ state, setState ] = useGlobalObj({ menu }, 'sections');
+	const [ state, setState ] = useGlobalObj({ Menu }, 'Sections');
 
    return (
       <section className={ `Menu-Container accent ${ state }` }>
 
-			<div className="Menu-Group" ref={ menu.ref }>
+			<div className="Menu-Group" ref={ Menu.ref }>
 				<ImageWrapper imgSrc= { menuImage }
 					imgDesc="A la carté risotto rätt"
 					altClass="background overlay"

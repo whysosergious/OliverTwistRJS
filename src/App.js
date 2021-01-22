@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from 'react';
 import './App.css';
 import './AppGeneral.css';
+import './animation.css';
 
 // zergski logic
 import { createObserver, queueFrame } from 'logic/zergski-intersection-observer';
@@ -35,12 +36,14 @@ import MediaViewer from 'modals/MediaViewer';
  * send all of them separately
  * @param {*} props
  */
-const handleNavIntersect = ({ entry, prevRatio }) => {
+const handleNavIntersect = ({ entry, observer, prevRatio }) => {
 	let { boundingClientRect, intersectionRatio, target } = entry;
 	// console.log(entry.boundingClientRect.y)
 	if ( entry.isIntersecting && entry.boundingClientRect.y > 100 ) {
 
-		target.zEl.setState( true );
+		target.zEl.setState( '' );
+		observer.unobserve( target );
+		console.log(target.zKey)
 	}
 	// Dealers choice
 	if (intersectionRatio > prevRatio) {
@@ -66,7 +69,7 @@ const App = () => {
 	useEffect(() => {
 		// for the global object to be accessible through import, it has to be initialized
 		// after a 'componentDidMount' or 'useEffect' in that componenet
-		const { sections } = globalObj;
+		const { Sections, ViewportAnimated } = globalObj;
 		main.ref = main.ref.current;
 
 		// all you need to create an intersectionObserver
@@ -76,10 +79,11 @@ const App = () => {
 			ref: rootRef,
 		}
 		root.ref = main.parentElement;
-
+		console.log(globalObj)
 		createObserver (
+				'initObserver',
 				root.ref,	// observer
-				Object.values(sections).map( e => { return e.ref }),
+				Object.values(ViewportAnimated).map( e => { return e.ref }),
 				handleNavIntersect	// callback function
 		);
 	}, []);

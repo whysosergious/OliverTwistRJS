@@ -13,28 +13,30 @@ import Button from 'shared/Button';
 
 
 let count = 0;
-let posts = [ <PostGroup key={ count } index={ count } /> ];
+let posts = [<PostGroup key={ count } index={ count } />];
 
 const NewsContainer = props => {
-	const news = {
+	const News = {
 		ref: useRef(null),
 		index: 2,
-		initialState: { display: 'idle bottom' },
+		initialState: '',
 	}
-	const [ state, setState ] = useGlobalObj({ news }, 'sections');
+	const NewsHeading = {
+		ref: useRef(null),
+		index: 2,
+		initialState: 'idle bottom',
+	}
+	const [ state, setState ] = useGlobalObj({ News }, 'Sections');
+	const [ headingState, setHeadingState ] = useGlobalObj({ NewsHeading }, 'ViewportAnimated');
 
 	const loadPosts = () => {
 		posts[++count] = <PostGroup key={ count } index={ count } />;
 		setState(count);
 	}
 
-	useEffect(() => {
-		// loadPosts();
-	}, [])
-
    return (
-      <section className={ `News-Container` } ref={ news.ref }>
-			<div className={ `Heading-Group ${ state.display || '' }` }
+      <section className={ `News-Container` } ref={ News.ref }>
+			<div className={ `Heading-Group ${ headingState } va` } ref={ NewsHeading.ref }
 				style={{ width: '80%', maxWidth: '30rem', marginBottom: '4rem' }}
 			>
 				<h1 className="dark">

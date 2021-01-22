@@ -21,16 +21,16 @@ import Anchor from 'shared/Anchor';
 
 
 const ContactContainer = props => {
-	const contact = {
+	const Contact = {
 		ref: useRef(null),
 		index: 6,
 	}
-	const [ state, setState ] = useGlobalObj({ contact }, 'sections');
+	const [ state, setState ] = useGlobalObj({ Contact }, 'Sections');
 
 
    return (
 		<>
-			<section className="Contact-Container dark" ref={ contact.ref }
+			<section className="Contact-Container dark" ref={ Contact.ref }
 				style={{ padding: '0' }}
 			>
 				<div className="Contact-Group">

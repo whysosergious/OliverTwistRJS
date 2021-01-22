@@ -97,12 +97,12 @@ var content = Object.create(null);
 
 // component for viewing images, videos and documents
 const MediaViewer = props => {
-	const mediaViewer = {
+	const MediaViewer = {
 		display: 'hidden',
 		contentIndex: 0,
 		initialState: { display: 'hidden' },
 	}
-	const [ viewerState, setViewerState ] = useGlobalObj({ mediaViewer });
+	const [ viewerState, setViewerState ] = useGlobalObj({ MediaViewer });
 	const [ state, setState ] = useState({
 		...canvas,
 		counter: 1,

@@ -24,12 +24,12 @@ section.accent {
 	width: 90%;
 	z-index: 2;
 }
-.Heading-Group.left {
+.left {
 	align-items: flex-start;
 	text-align: left;
 	padding-right: 10%;
 }
-.Heading-Group.right {
+.right {
 	align-items: flex-end;
 	text-align: right;
 	padding-left: 10%;
@@ -40,8 +40,6 @@ section.accent {
 	height: 100%;
 	width: 100%;
 	font-size: 0;
-	/* temp */
-	background-color: rgb(124, 124, 141);
 }
 .Image-Wrapper.overlay::after {
 	content: '';
@@ -60,11 +58,13 @@ section.accent {
 	object-fit: cover;
 }
 
-.Image-Wrapper.background {
+.background {
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	top: 0;
+	top: 0; left: 0;
+	opacity: .75;
+	object-fit: cover;
 
 	z-index: -1;
 }

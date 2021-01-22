@@ -18,15 +18,15 @@ import caskAleImage from 'ass/img/about/cask-ale.jpg';
 import ImageWrapper from 'shared/ImageWrapper';
 
 const AboutContainer = props => {
-	const about = {
+	const About = {
 		ref: useRef(null),
 		index: 5,
 	}
-	const [ state, setState ] = useGlobalObj({ about }, 'sections');
+	const [ state, setState ] = useGlobalObj({ About }, 'Sections');
 
    return (
 		<>
-			<section className="About-Container" ref={ about.ref }
+			<section className="About-Container" ref={ About.ref }
 				style={{ position: 'relative', paddingBottom: '12rem' }}
 			>
 				<ImageWrapper imgSrc={ repslagarBackground }

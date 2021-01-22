@@ -15,16 +15,16 @@ import Button from 'shared/Button';
 // import ImageWrapper from 'shared/ImageWrapper';
 
 const Navigation = props => {
-	const nav = {
+	const Nav = {
 		ref: useRef(null),
 		index: 1,
 	}
 	// we save our reference to global and get a callback with an individual hook state
 	// that we can set from all components that import 'global-access' collection
-	const [ linkedState, setLinkedState ] = useGlobalObj({ nav }, 'sections');
+	const [ linkedState, setLinkedState ] = useGlobalObj({ Nav }, 'Sections');
 
    return (
-      <nav className={ linkedState ? 'stuck' : '' } ref={ nav.ref }>
+      <nav className={ linkedState ? 'stuck' : '' } ref={ Nav.ref }>
 
 			<div className="Section-Links">
 				<Button altClass="minimal"

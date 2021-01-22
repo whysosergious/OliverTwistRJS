@@ -3,6 +3,7 @@
  */
 import React, { useRef, createRef, useEffect, useState } from 'react';
 import './Container.css';
+import styles from './Doormat.module.css';
 
 // zergski logic
 import { useGlobalObj } from 'logic/zergski-global-object';
@@ -17,30 +18,29 @@ import Button from 'shared/Button';
 import ImageWrapper from 'shared/ImageWrapper';
 
 const DoormatContainer = props => {
-	const promo = {
+	const Promo = {
 		ref: useRef(null),
 		index: 2,
 		initialState: 'idle bottom',
 	}
-	const doormat = {
+	const Doormat = {
 		ref: useRef(null),
 		index: 3,
 		initialState: 'idle right',
 	}
-	const [ promoState, setPromoState ] = useGlobalObj({ promo }, 'observerAnimated');
-	const [ doormatState, setDoormatState ] = useGlobalObj({ doormat }, 'observerAnimated');
-
+	const [ promoState, setPromoState ] = useGlobalObj({ Promo }, 'ViewportAnimated');
+	const [ doormatState, setDoormatState ] = useGlobalObj({ Doormat }, 'ViewportAnimated');
 
    return (
 		<>
-			<section className={ `Promo-Container accent ${ promoState }` } ref={ promo.ref }>
+			<section className={ `Promo-Container accent` } ref={ Promo.ref }>
 				<ImageWrapper imgSrc={ promoBackgroundImage }
 					imgDesc="World Atlas of Beer guide 2021 edition by Timm Webb and Stephen Beumont"
-					altClass="background"
+					altClass={ styles.background_filter }
 				/>
 
 
-				<div className="Heading-Group">
+				<div className={ `${ styles.headingGroup } ${ promoState } va` }>
 					<h1><span>Bland de</span>bästa i världen</h1>
 					<h3>
 						I den nya utgåvan av World Atlas of Beer för 2021 så smiter en sylta på Repslagargatan in på deras 10 i topp lista över världens bästa ställen att dricka öl på!
@@ -57,15 +57,14 @@ const DoormatContainer = props => {
 					altClass="Article-Image"
 				/> */}
 			</section>
-			<section className={ `Doormat-Container dark ${ doormatState }` } ref={ doormat.ref }>
+			<section className={ `Doormat-Container dark` } ref={ Doormat.ref }>
 				<ImageWrapper imgSrc={ doormatBackgroundImage }
 					imgDesc="Shelves with beer cans in the bars fridge"
 					altClass="background"
 
-					// temp
-					style={{ background: 'none' }}
+					style={{ opacity: 0.07 }}
 				/>
-				<div className="Heading-Group left">
+				<div className={ `${ styles.headingGroup_left } ${ doormatState } va` }>
 					<h2>
 						Ett sortiment vi är stolta över
 					</h2>

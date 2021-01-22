@@ -4,27 +4,7 @@
 	padding: 8rem 0;
 
 }
-.idle .Heading-Group >* {
-	opacity: 0;
-}
-.idle.bottom .Heading-Group >* {
-	transform: translate3d(0, 4rem, 0);
-}
-.idle.right .Heading-Group >* {
-	transform: translate3d(4rem, 0, 0);
-}
-.Heading-Group > :nth-child(1) {
-	--stag: 0;
-	transition-delay: calc(.2s * var(--stag));
-}
-.Heading-Group > :nth-child(2) {
-	--stag: 1;
-	transition-delay: calc(.2s * var(--stag));
-}
-.Heading-Group > :nth-child(3) {
-	--stag: 2;
-	transition-delay: calc(.2s * var(--stag));
-}
+
 
 .Promo-Container::after {
 	content: '';
@@ -49,42 +29,17 @@
 	z-index: -1;
 }
 
-.Promo-Container .Image-Wrapper.background {
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: .75;
-	width: 100%;
-	object-fit: cover;
-
-	filter: brightness(.2) contrast(1.4);
-	z-index: 1;
-}
-
-.Promo-Container .Heading-Group {
-	width: 94%;
-	max-width: 40rem;
-}
-
 .Doormat-Container {
 	position: relative;
 	padding: 10rem 0;
 }
 
-.Doormat-Container .Heading-Group {
-	padding-right: 20%;
-}
 .Doormat-Container h2 {
 	max-width: 100%;
 }
 .Doormat-Container h3 {
 	max-width: 24rem;
 }
-
-.Doormat-Container .background {
-	opacity: .07;
-}
-
 
 
 @media screen and (min-width: 501px) {
@@ -109,19 +64,11 @@
 
 	}
 
-	.Doormat-Container .Heading-Group {
-		width: 72%;
-		padding-right: 35%;
-	}
+
 	.Doormat-Container h3 {
 		max-width: 25rem;
 	}
 
-	.Doormat-Container .background {
-		text-align: right;
-		height: 100%;
-		/* width: auto; */
-	}
 	.Doormat-Container img {
 		position: relative;
 		right: 2%;

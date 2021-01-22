@@ -1,8 +1,8 @@
 /**
  * News post component
  */
-import React, { useRef } from 'react';
-import { useGlobalObj } from 'logic/zergski-global-object';
+import React, { useRef, useEffect } from 'react';
+import { useGlobalObj, globalObj } from 'logic/zergski-global-object';
 
 // components
 import ImageWrapper from 'shared/ImageWrapper';
@@ -16,17 +16,20 @@ const hashTags = hashTagsArray.map((tag, index) => {
 
 
 
-const NewsPost = ({ index }) => {
-	const post = {
+const NewsPost = ({ index, imgSrc }) => {
+	const Post = {
 		ref: useRef(null),
 		index: index,
 		initialState: 'idle bottom',
 	}
-	const [ state ] = useGlobalObj({ [`post${index}`]: post }, 'observerAnimated');
+	const [ state ] = useGlobalObj({ [`Post${index}`]: Post }, 'ViewportAnimated');
 
+	useEffect(() => {
+		globalObj.Observers.initObserver.observeElement( globalObj.ViewportAnimated[`Post${index}`].ref )
+	}, []);
    return (
-      <div className={ `News-Post` } ref={ post.ref }>
-			<ImageWrapper />
+      <div className={ `News-Post ${ state } va` } ref={ Post.ref }>
+			<ImageWrapper imgSrc={ imgSrc } />
 
 			<div className="News-Post-Content">
 				<h5>
