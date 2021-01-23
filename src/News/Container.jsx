@@ -13,7 +13,7 @@ import Button from 'shared/Button';
 
 
 let count = 0;
-let posts = [<PostGroup key={ count } index={ count } />];
+let posts = [ <PostGroup key={ count } index={ count } /> ];
 
 const NewsContainer = props => {
 	const News = {
@@ -23,11 +23,11 @@ const NewsContainer = props => {
 	}
 	const NewsHeading = {
 		ref: useRef(null),
-		index: 2,
+		index: 0,
 		initialState: 'idle bottom',
 	}
 	const [ state, setState ] = useGlobalObj({ News }, 'Sections');
-	const [ headingState, setHeadingState ] = useGlobalObj({ NewsHeading }, 'ViewportAnimated');
+	const [ headingState ] = useGlobalObj({ NewsHeading }, 'ViewportAnimated');
 
 	const loadPosts = () => {
 		posts[++count] = <PostGroup key={ count } index={ count } />;

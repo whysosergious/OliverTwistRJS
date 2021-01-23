@@ -2,6 +2,7 @@
  * News post group component
  */
 import React, { useEffect, useState } from 'react';
+import { globalObj } from 'logic/zergski-global-object';
 
 // components
 import NewsPost from './Post';
@@ -43,7 +44,10 @@ const PostGroup = ({ index: groupNr }) => {
 	}
 	const [ state, setState ] = useState(null)
 	useEffect(() => {
-		setState(displayPosts())
+		setState(displayPosts());
+		setTimeout(()=> {
+			globalObj.getOffsets('Sections')
+		}, 40);
 	}, [])
 
 

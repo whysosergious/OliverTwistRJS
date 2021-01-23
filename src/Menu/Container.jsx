@@ -18,9 +18,20 @@ const MenuContainer = props => {
 	const Menu = {
 		ref: useRef(null),
 		index: 4,
+	}
+	const MenuHeading = {
+		ref: useRef(null),
+		index: 4,
+		initialState: 'idle bottom',
+	}
+	const MenuButtons = {
+		ref: useRef(null),
+		index: 4,
 		initialState: 'idle bottom',
 	}
 	const [ state, setState ] = useGlobalObj({ Menu }, 'Sections');
+	const [ headingState ] = useGlobalObj({ MenuHeading }, 'ViewportAnimated');
+	const [ buttonsState ] = useGlobalObj({ MenuButtons }, 'ViewportAnimated');
 
    return (
       <section className={ `Menu-Container accent ${ state }` }>
@@ -29,8 +40,9 @@ const MenuContainer = props => {
 				<ImageWrapper imgSrc= { menuImage }
 					imgDesc="A la carté risotto rätt"
 					altClass="background overlay"
+					style={{ opacity: 1 }}
 				/>
-				<div className="Heading-Group">
+				<div className={ `Heading-Group ${ headingState } va` } ref={ MenuHeading.ref }>
 					<h1>
 						Våran Meny
 					</h1>
@@ -40,7 +52,7 @@ const MenuContainer = props => {
 				</div>
 			</div>
 
-			<div className="Button-Group">
+			<div className={ `Button-Group ${ buttonsState } va` } ref={ MenuButtons.ref }>
 				<Button altClass="menu"
 					text="Lunch"
 				/>

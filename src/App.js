@@ -28,6 +28,10 @@ import FooterContainer from './Footer/Container';
 // Modals
 import MediaViewer from 'modals/MediaViewer';
 
+// components
+import Button from 'shared/Button';
+import Anchor from 'shared/Anchor';
+
 
 
 /**
@@ -36,64 +40,84 @@ import MediaViewer from 'modals/MediaViewer';
  * send all of them separately
  * @param {*} props
  */
-const handleNavIntersect = ({ entry, observer, prevRatio }) => {
-	let { boundingClientRect, intersectionRatio, target } = entry;
-	// console.log(entry.boundingClientRect.y)
-	if ( entry.isIntersecting && entry.boundingClientRect.y > 100 ) {
+const handleNavigation = ({ entry, observer }) => {
+	// console.log(entry.target.zKey, entry.isIntersecting)
 
-		target.zEl.setState( '' );
-		observer.unobserve( target );
-		console.log(target.zKey)
+	if ( entry.isIntersecting ) {
+		globalObj.Sections.Nav.current = entry.target.zEl.index;
+		console.log(globalObj.Sections.Nav.current)
 	}
-	// Dealers choice
-	if (intersectionRatio > prevRatio) {
-		target.zkey === 'nav' && boundingClientRect.y > 10 && queueFrame(() => {
-			target.classList.remove('stuck');
-		});
-	} else {
-		target.zkey === 'nav' && boundingClientRect.y < 10 && queueFrame(() => {
-			target.classList.add('stuck');
-		});
+
+	if ( entry.target.zKey === 'Nav' && entry.isIntersecting ) {
+		globalObj.Sections.Nav.setState({ sticky: 'stuck' });
+	} else if ( entry.target.zKey === 'Nav' && !entry.isIntersecting ) {
+		globalObj.Sections.Nav.setState({ sticky: '' });
 	}
 }
 
+const handleViewportAnimated = ({ entry, observer, prevRatio }) => {
+	// console.log(entry.boundingClientRect.y)
+	if ( entry.isIntersecting && entry.boundingClientRect.y > 100 ) {
+		// console.log(observer.root.scrollTop)
+		queueFrame(() => {
+			entry.target.zEl.setState( '' );
+			observer.unobserve( entry.target );
+			// console.log(entry.target.zKey)
+		});
+	}
+}
 
 const App = () => {
 	// const [ states, setStates ] = useState({ stuck: false });
 
 	const main = {
+		root: useRef(null),
 		ref: useRef(null),
 	}
-	var rootRef = useRef(null);
 
 	useEffect(() => {
 		// for the global object to be accessible through import, it has to be initialized
-		// after a 'componentDidMount' or 'useEffect' in that componenet
+		// after a 'componentDidMount' or 'useEffect' in that component
 		const { Sections, ViewportAnimated } = globalObj;
-		main.ref = main.ref.current;
-
+		globalObj.Sections.Nav.current = 0;
+		main.root = main.ref.current.parentElement;
+		globalObj.root = main.root;
 		// all you need to create an intersectionObserver
 		// a reference of to the observer, in our case
 		// the root element
-		var root = {
-			ref: rootRef,
-		}
-		root.ref = main.parentElement;
-		console.log(globalObj)
 		createObserver (
-				'initObserver',
-				root.ref,	// observer
-				Object.values(ViewportAnimated).map( e => { return e.ref }),
-				handleNavIntersect	// callback function
+			'ViewportAnimation',
+			main.root,	// observer
+			Object.values(ViewportAnimated).map( e => { return e.ref }),
+			handleViewportAnimated	// callback function
 		);
+		createObserver (
+			'Navigation',
+			main.root,	// observer
+			Object.values(Sections).map( e => { return e.ref }),
+			handleNavigation,	// callback function
+			['0px 0px -99% 0px'],
+			1
+		);
+
+		console.log(globalObj)
 	}, []);
 
 	return (
 		<main className="App" ref={ main.ref }>
-			<ViewportLogic />
 			<LandingContainer />
 			<Navigation />
 			<header className="App-header">
+				<Anchor altClass="icon"
+					link="none"
+					fileName="otlogo-white-simple.svg"
+					style={{ marginRight: 'auto', height: '2.4rem' }}
+				/>
+
+				<Button altClass="minimal lang"
+					text="Eng."
+					clicked={ '' }
+				/>
 			</header>
 
 			<DoormatContainer />

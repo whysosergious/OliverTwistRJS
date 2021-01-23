@@ -25,7 +25,7 @@ const NewsPost = ({ index, imgSrc }) => {
 	const [ state ] = useGlobalObj({ [`Post${index}`]: Post }, 'ViewportAnimated');
 
 	useEffect(() => {
-		globalObj.Observers.initObserver.observeElement( globalObj.ViewportAnimated[`Post${index}`].ref )
+		globalObj.Observers.ViewportAnimation.observeElement( globalObj.ViewportAnimated[`Post${index}`].ref )
 	}, []);
    return (
       <div className={ `News-Post ${ state } va` } ref={ Post.ref }>

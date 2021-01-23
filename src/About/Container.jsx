@@ -22,7 +22,41 @@ const AboutContainer = props => {
 		ref: useRef(null),
 		index: 5,
 	}
+	const AboutHeading = {
+		ref: useRef(null),
+		index: 0,
+		initialState: 'idle bottom',
+	}
+	const AboutGroup0 = {
+		ref: useRef(null),
+		index: 0,
+		initialState: 'idle',
+	}
+	const AboutGroup1 = {
+		ref: useRef(null),
+		index: 0,
+		initialState: 'idle',
+	}
+	const AboutGroup2 = {
+		ref: useRef(null),
+		index: 0,
+		initialState: 'idle',
+	}
+	const AboutGroup3 = {
+		ref: useRef(null),
+		index: 0,
+		initialState: 'idle',
+	}
+	// for ( let i=0; i<4; i++) {
+
+	// }
 	const [ state, setState ] = useGlobalObj({ About }, 'Sections');
+	const [ headingState ] = useGlobalObj({ AboutHeading }, 'ViewportAnimated');
+	const [ group0State ] = useGlobalObj({ AboutGroup0 }, 'ViewportAnimated');
+	const [ group1State ] = useGlobalObj({ AboutGroup1 }, 'ViewportAnimated');
+	const [ group2State ] = useGlobalObj({ AboutGroup2 }, 'ViewportAnimated');
+	const [ group3State ] = useGlobalObj({ AboutGroup3 }, 'ViewportAnimated');
+
 
    return (
 		<>
@@ -42,7 +76,7 @@ const AboutContainer = props => {
 						opacity: '.05'
 					}}
 				/>
-				<div className="Heading-Group Intro left">
+				<div className={ `Heading-Group Intro left ${ headingState } va` } ref={ AboutHeading.ref }>
 					<h1 className="dark">
 						It's not complicated
 					</h1>
@@ -54,7 +88,7 @@ const AboutContainer = props => {
 					</h3>
 				</div>
 
-				<div className="About-Group right">
+				<div className={ `About-Group right ${ group0State } va` } ref={ AboutGroup0.ref }>
 					<div className="Heading-Group right">
 						<h2 className="dark">
 							Samarbete<br/>& Import
@@ -68,7 +102,7 @@ const AboutContainer = props => {
 					/>
 				</div>
 
-				<div className="About-Group left">
+				<div className={ `About-Group left ${ group1State } va` } ref={ AboutGroup1.ref }>
 					<div className="Heading-Group left">
 						<h2 className="dark">
 							Support your<br/>local brewers
@@ -87,7 +121,7 @@ const AboutContainer = props => {
 			<section className="About-Container dark"
 				style={{ paddingTop: '0' }}
 			>
-				<div className="About-Group right">
+				<div className={ `About-Group right ${ group2State } va` } ref={ AboutGroup2.ref }>
 					<div className="Heading-Group right">
 						<h2>
 							Service i fokus
@@ -101,7 +135,7 @@ const AboutContainer = props => {
 					/>
 				</div>
 
-				<div className="About-Group left">
+				<div className={ `About-Group left ${ group3State } va` } ref={ AboutGroup3.ref }>
 					<div className="Heading-Group left">
 						<h2>
 							Vi strävar<br/>efter kvalitet

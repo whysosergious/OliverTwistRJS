@@ -30,18 +30,32 @@ const GalleryContainer = props => {
 		ref: useRef(null),
 		index: 3,
 	}
+	const GalleryHeading = {
+		ref: useRef(null),
+		index: 0,
+		initialState: 'idle',
+	}
+	const GalleryGrid = {
+		ref: useRef(null),
+		index: 1,
+		initialState: 'idle',
+	}
 	const [ state, setState ] = useGlobalObj({ Gallery }, 'Sections');
+	const [ headingState ] = useGlobalObj({ GalleryHeading }, 'ViewportAnimated');
+	const [ gridState ] = useGlobalObj({ GalleryGrid }, 'ViewportAnimated');
 	const handleClick = index => {
 		MediaViewer.setState({ display: 'show', index });
 	}
 
    return (
       <section className="Gallery-Container dark" ref={ Gallery.ref }>
-			<h1>
-				Bildgalleri
-			</h1>
+			<div className={ `Heading-Group ${ headingState } va` } ref={ GalleryHeading.ref }>
+				<h1>
+					Bildgalleri
+				</h1>
+			</div>
 
-			<div className="Gallery-Grid">
+			<div className={ `Gallery-Grid ${ gridState } va` } ref={ GalleryGrid.ref }>
 				<ImageWrapper imgSrc={ tempImage1 }
 					imgDesc="temp"
 					index={ 0 }

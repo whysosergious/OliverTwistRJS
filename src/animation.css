@@ -7,6 +7,9 @@
 .idle.right >* {
 	transform: translate3d(4rem, 0, 0);
 }
+.idle.left >* {
+	transform: translate3d(-4rem, 0, 0);
+}
 
 .va > :nth-child(1) {
 	--stag: 0;
@@ -18,21 +21,27 @@
 .va > :nth-child(3) {
 	--stag: 2;
 }
+.va > :nth-child(4),
 .Post-Group > :nth-child(2) > :nth-child(1) {
 	--stag: 3;
 }
+.va > :nth-child(5),
 .Post-Group > :nth-child(2) > :nth-child(2) {
 	--stag: 4;
 }
+.va > :nth-child(6),
 .Post-Group > :nth-child(2) > :nth-child(3) {
 	--stag: 5;
 }
+.va > :nth-child(7),
 .Post-Group > :nth-child(3) > :nth-child(1) {
 	--stag: 6;
 }
+.va > :nth-child(8),
 .Post-Group > :nth-child(3) > :nth-child(2) {
 	--stag: 7;
 }
+.va > :nth-child(9),
 .Post-Group > :nth-child(3) > :nth-child(3) {
 	--stag: 8;
 }
@@ -41,4 +50,19 @@
 	transition: opacity .4s ease, transform .6s ease-out;
 	will-change: opacity, transform;
 	transition-delay: calc(.1s * var(--stag));
+}
+
+
+
+/* nav */
+nav.down::before,
+nav.up::before {
+	transition: transform .75s cubic-bezier(0.395, 0.690, 0.690, 0.400) .1s;
+}
+nav.down::before {
+	transform: translate3d(0, -300vh, 0);
+}
+nav.up::before {
+	top: -200vh;
+	transform: translate3d(0, 300vh, 0);
 }

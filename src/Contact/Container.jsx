@@ -25,7 +25,19 @@ const ContactContainer = props => {
 		ref: useRef(null),
 		index: 6,
 	}
+	const ContactHeading = {
+		ref: useRef(null),
+		index: 6,
+		initialState: 'idle bottom',
+	}
+	const HoursWrapper = {
+		ref: useRef(null),
+		index: 6,
+		initialState: 'idle scale',
+	}
 	const [ state, setState ] = useGlobalObj({ Contact }, 'Sections');
+	const [ headingState ] = useGlobalObj({ ContactHeading }, 'ViewportAnimated');
+	const [ hoursState ] = useGlobalObj({ HoursWrapper }, 'ViewportAnimated');
 
 
    return (
@@ -38,7 +50,7 @@ const ContactContainer = props => {
 						imgDesc="Väggar med retro öl etiketter"
 						altClass="background overlay"
 					/>
-					<div className="Heading-Group">
+					<div className={ `Heading-Group ${ headingState } va` } ref={ ContactHeading.ref }>
 						<h2>
 							Kontakta oss
 						</h2>
@@ -71,7 +83,7 @@ const ContactContainer = props => {
 						</div>
 					</div>
 				</div>
-				<div className="Business-Hours-Wrapper">
+				<div className={ `Business-Hours-Wrapper ${ hoursState } va` } ref={ HoursWrapper.ref }>
 					<BusinessHours />
 				</div>
 

@@ -28,6 +28,7 @@ button h2 {
 	align-items: center;
 
 	font-size: 2rem;
+	white-space: nowrap;
 
 	height: 100%;
 	width: 100%;
@@ -101,11 +102,16 @@ button.underline.small h2 {
 }
 
 button.minimal {
-
-	border: none
+	width: auto;
+	padding: 0 1.4rem;
+	border: none;
 }
 button.minimal h2 {
 	font-size: 1.4rem;
+	/* opacity: .9; */
+}
+button.minimal:hover h2 {
+	transform: scale(1.1);
 }
 
 /* call to action */

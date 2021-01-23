@@ -62,13 +62,13 @@ function observeElement( targets ) {
 }
 
 // intersection observer
-const createObserver = ( name, root, targets, handler, options, thresholdSteps=20, originalHandler=false ) => {
+const createObserver = ( name, root, targets, handler, rootMargin=['0px 0px 0px 0px'], thresholdSteps=20, delay=0, originalHandler=false ) => {
 	let observer;
 
 	let ModuleOptions = {
-		delay: 0,
+		delay: delay,
 		root: root,
-		rootMargin: ['-10px 0px -15% 0px'],
+		rootMargin: rootMargin,
 		threshold: buildThresholdList(thresholdSteps),
 	};
 
@@ -88,7 +88,7 @@ const createObserver = ( name, root, targets, handler, options, thresholdSteps=2
 		});
 	}
 
-	observer = new IntersectionObserver( originalHandler ? handler : ModuleHandleIntersect , options || ModuleOptions );
+	observer = new IntersectionObserver( originalHandler ? handler : ModuleHandleIntersect , ModuleOptions );
 
 	observer.handler = handler;
 	observer.ObserverTargets = {};
