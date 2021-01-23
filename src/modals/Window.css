@@ -1,0 +1,65 @@
+.Modal-Container {
+	/* display: none; */
+}
+
+.Modal-Window {
+	display: flex;
+	position: fixed;
+	justify-content: center;
+	height: 80%;
+	/* height: max-content; */
+	max-height: 80%;
+	width: max-content;
+	/* width: 30rem; */
+	top: 0; right: 0; bottom: 0; left: 0;
+	margin: auto;
+	padding: 2.7rem 0;
+	border-radius: 1rem;
+	background-color: rgb(9, 17, 15);
+	overflow: hidden;
+	overflow-y: auto;
+	z-index: 4;
+}
+
+.Blur-Overlay,
+.Blur-Overlay::before {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	z-index: 4;
+}
+.Blur-Overlay::before {
+	content: '';
+	background-color: rgba(0, 0, 0, 0.767);
+	z-index: 1;
+	backdrop-filter: blur(20px);
+}
+
+.blur nav {
+	filter: blur(10px);
+}
+
+.blur::before {
+	content: '';
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	backdrop-filter: blur(1px);
+}
+
+/* .Modal-Container.hidden, */
+.Business-Hours.hidden,
+.Online-Booking.hidden {
+	display: none;
+}
+
+.Modal-Container.Book {
+	display: flex;
+}

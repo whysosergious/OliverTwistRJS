@@ -29,8 +29,8 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
-	/* height: 100%; */
+	padding: 6rem 0;
+	height: 100%;
 	width: 100%;
 }
 section.Contact-Container {
@@ -38,7 +38,8 @@ section.Contact-Container {
 	/* background-color: #090811; */
 	background-color: #0a080f;
 }
-.Contact-Container::after {
+.Contact-Container::after,
+.striped::after {
 	content: '';
 	position: absolute;
 	height: 100%;

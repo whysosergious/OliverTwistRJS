@@ -8,13 +8,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // contexts
-import { StateProvider } from 'logic/kernel'
+// import { StateProvider } from 'logic/kernel'
 
 ReactDOM.render(
 	<React.StrictMode>
-		<StateProvider>
+		{/* <StateProvider> */}
 			<App />
-		</StateProvider>
+		{/* </StateProvider> */}
 	</React.StrictMode>,
 	document.getElementById('root')
 );

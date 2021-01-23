@@ -116,7 +116,7 @@ const MediaViewer = props => {
 
 
 	if ( viewerState.display === 'show' ) {
-		document.body.classList.add('scroll-lock');
+		// document.body.classList.add('scroll-lock');
 		setTimeout(()=>{
 			globalObj.MediaViewer.setState({ display: 'visible' });
 		}, 50)
@@ -160,7 +160,7 @@ const MediaViewer = props => {
 			globalObj.MediaViewer.setState({ display: 'hidden' });
 		}, 400)
 
-		document.body.classList.remove('scroll-lock');
+		// document.body.classList.remove('scroll-lock');
 	}
 
 

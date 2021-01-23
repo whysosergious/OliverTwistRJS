@@ -46,7 +46,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		min-height: calc(100 * var(--vh) - 3rem);
+		min-height: calc(100 * var(--vh) - 2.2rem);
 		height: max-content;
 		background-color: #000;
 	}

@@ -27,6 +27,7 @@ import FooterContainer from './Footer/Container';
 
 // Modals
 import MediaViewer from 'modals/MediaViewer';
+import ModalWindow from 'modals/Window';
 
 // components
 import Button from 'shared/Button';
@@ -41,13 +42,6 @@ import Anchor from 'shared/Anchor';
  * @param {*} props
  */
 const handleNavigation = ({ entry, observer }) => {
-	// console.log(entry.target.zKey, entry.isIntersecting)
-
-	if ( entry.isIntersecting ) {
-		globalObj.Sections.Nav.current = entry.target.zEl.index;
-		console.log(globalObj.Sections.Nav.current)
-	}
-
 	if ( entry.target.zKey === 'Nav' && entry.isIntersecting ) {
 		globalObj.Sections.Nav.setState({ sticky: 'stuck' });
 	} else if ( entry.target.zKey === 'Nav' && !entry.isIntersecting ) {
@@ -56,14 +50,12 @@ const handleNavigation = ({ entry, observer }) => {
 }
 
 const handleViewportAnimated = ({ entry, observer, prevRatio }) => {
-	// console.log(entry.boundingClientRect.y)
-	if ( entry.isIntersecting && entry.boundingClientRect.y > 100 ) {
-		// console.log(observer.root.scrollTop)
+	// console.log(entry.target.zKey, entry.isIntersecting)
+	if ( entry.isIntersecting ) {
 		queueFrame(() => {
 			entry.target.zEl.setState( '' );
-			observer.unobserve( entry.target );
-			// console.log(entry.target.zKey)
 		});
+		observer.unobserve( entry.target );
 	}
 }
 
@@ -80,8 +72,9 @@ const App = () => {
 		// after a 'componentDidMount' or 'useEffect' in that component
 		const { Sections, ViewportAnimated } = globalObj;
 		globalObj.Sections.Nav.current = 0;
-		main.root = main.ref.current.parentElement;
-		globalObj.root = main.root;
+		main.ref = main.ref.current;
+		main.root = main.ref.parentElement;
+		globalObj.main = main;
 		// all you need to create an intersectionObserver
 		// a reference of to the observer, in our case
 		// the root element
@@ -89,12 +82,14 @@ const App = () => {
 			'ViewportAnimation',
 			main.root,	// observer
 			Object.values(ViewportAnimated).map( e => { return e.ref }),
-			handleViewportAnimated	// callback function
+			handleViewportAnimated,	// callback function
+			['-20% 0px -20% 0px'],
+			1
 		);
 		createObserver (
 			'Navigation',
 			main.root,	// observer
-			Object.values(Sections).map( e => { return e.ref }),
+			Sections.Nav.ref,
 			handleNavigation,	// callback function
 			['0px 0px -99% 0px'],
 			1
@@ -129,6 +124,7 @@ const App = () => {
 			<FooterContainer />
 
 			<MediaViewer />
+			<ModalWindow />
 		</main>
 	);
 }

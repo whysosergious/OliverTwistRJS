@@ -1,4 +1,9 @@
 
+.Hours-Container {
+	position: relative;
+
+}
+
 .Business-Hours button h2 {
 	font-size: 1.3rem;
 }
@@ -7,14 +12,13 @@
 }
 
 .Business-Hours h3 {
-	font-size: 1.2rem;
-	line-height: .9rem;
+	font-size: .9rem;
+	line-height: 1.3rem;
 }
 
 .Business-Hours {
-	width: 23rem;
-	padding: 3rem 3rem 3rem 3rem;
-	margin: 4rem 0 4rem 0;
+	width: 24rem;
+	padding: 2rem 1.5rem;
 	background-color: #141718e7;
 }
 
@@ -23,18 +27,94 @@
 }
 
 .Business-Hours .Button-Group {
-	justify-content: space-around;
+	justify-content: space-evenly;
 
-	margin-top: 3.7rem;
+	margin-top: 2.7rem;
 }
 
 .Day {
 	display: flex;
 	flex-direction: row;
-	margin: 1.5rem 0;
+	align-items: center;
+	margin-bottom: 1rem;
+	/* white-space: nowrap; */
 }
 .Day :nth-child(1) {
+	text-align: left;
 	margin-right: auto;
+}
+.Day :nth-child(2) {
+	white-space: nowrap;
+	margin-left: .4rem;
+}
+
+.Hours-Message {
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+	margin-bottom: 1rem;
+}
+
+.Hours-Message h3 {
+	font-size: .75rem;
+	line-height: 1.1rem;
+	padding: 1rem 0;
+	color: rgb(199, 182, 182);
+}
+
+.Hours-Message::before,
+.Hours-Message::after {
+	content: '';
+	display: flex;
+	position: relative;
+	align-self: center;
+	top: 0;left: 0;
+	height: .14rem;
+	width: 44%;
+	background-color: white;
+	opacity: .05;
+}
+
+.Hours-Container .va {
+	--stag-mod: 3;
+}
+.Hours-Container .idle.va {
+	--stag-mod: 0;
+}
+
+.Regular-Hours,
+.Irregular-Hours {
+	padding: 0 1.5rem;
+}
+.Irregular-Hours {
+	position: absolute;
+	top: 0; left: 0;
+	height: 100%;
+	width: 100%;
+	padding-right: 1.2rem;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+	width: .3rem;
+}
+::-webkit-scrollbar-track {
+	background: #0c1113;
+}
+::-webkit-scrollbar-thumb {
+	width: 1rem;
+	border-radius: 1rem;
+	background-color: rgb(3, 6, 7);
+}
+::-webkit-scrollbar-thumb:hover {
+	width: 1rem;
+	border-radius: 1rem;
+	background-color: rgb(0, 0, 0);
+}
+.idle::-webkit-scrollbar-track,
+.idle::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0);
 }
 
 
@@ -51,34 +131,13 @@
 		font-size: 2rem;
 	}
 
-	.Business-Hours h3 {
-		font-size: .9rem;
-		line-height: .9rem;
-	}
-
 	.Business-Hours {
-		width: 20rem;
-		padding: 2rem 3rem 2rem 3rem;
-		margin: 4rem 0 4rem 0;
+		width: 22rem;
+		/* padding: 2rem 2.7rem 2rem 2.7rem; */
 		background-color: #141718e7;
 	}
 
 	.Business-Hours .headline {
 		margin-bottom: 1rem;
-	}
-
-	.Business-Hours .Button-Group {
-		justify-content: space-around;
-
-		margin-top: 3rem;
-	}
-
-	.Day {
-		display: flex;
-		flex-direction: row;
-		margin: 1.5rem 0;
-	}
-	.Day :nth-child(1) {
-		margin-right: auto;
 	}
 }

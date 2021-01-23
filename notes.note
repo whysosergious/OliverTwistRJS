@@ -15,7 +15,9 @@ exp colors
 
 #0d0d0
 
+font-family: 'OTS', sans-serif;
 
+font-family: 'Sin', sans-serif;
 
 device viewport dims:
 

@@ -30,7 +30,6 @@
 	top: 0; left: 0;
 	z-index: 9;
 	transition: transform .4s ease;
-
 	will-change: transform;
 }
 .Media-Viewer-Content.center {
@@ -61,8 +60,8 @@
 .Media-Viewer .Anchor {
 	display: flex;
 	position: relative;
-	height: 3.5rem;
-	width: 3.5rem;
+	height: 3.3rem;
+	width: 3.3rem;
 	padding: 1rem .7rem 1rem 1rem;
 	opacity: .1;
 	margin-bottom: 1.7rem;
@@ -91,12 +90,12 @@
 	content: '';
 	position: absolute;
 	height: 100vh;
-	width: 100vw;
+	width: 100%;
 	top: 0;
 	z-index: 8;
 	background-color: rgba(0, 0, 0, 0.932);
 	backdrop-filter: blur(7px);
-	-webkit-backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(7px);
 	z-index: -1;
 }
 

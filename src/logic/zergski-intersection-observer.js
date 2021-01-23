@@ -5,21 +5,38 @@
 import { globalObj } from 'logic/zergski-global-object';
 
 
-var rafTick = false;
+let rafTick = false;
+const rafQueue = [];
 /**
  * Execute a function or method (or set a state)
  * TODO!: Creating a queue array that removes duplicate or unneded action and executes
  * the rest in order
  * @param {Function} action
  */
-export const queueFrame = ( action ) => {
+export const queueFrame = action => {
 	action = typeof action !== 'function' ? (() => action) : action;	// we need a function
+	rafQueue.push(action);	// add to queue
+
+	const nextRequest = () => {
+		let count = rafQueue.length;
+		return new Promise(( res, rej ) => {
+			window.requestAnimationFrame(() => {
+				for ( let i=0; i<count; i++ ) {
+					rafQueue[i]();
+				}
+				rafQueue.splice(0, count);
+				res('done');
+			});
+		});
+	}
+	const raf = async () => {
+		await nextRequest().then(v => {
+			rafQueue.length > 0 ? raf() : rafTick = false;;
+		});
+	};
+
 	if (!rafTick) {
-		window.requestAnimationFrame(() => {
-			action();
-			rafTick = false;
-			return 'done';
-		})
+		raf();
 		rafTick = true;
 	}
 }

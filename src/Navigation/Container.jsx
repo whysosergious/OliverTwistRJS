@@ -40,7 +40,7 @@ const Navigation = props => {
 				}, 10);
 				setTimeout(()=>{
 					setSwipe('');
-				}, 400);
+				}, 500);
 			}, 550)
 		} else if ( globalObj.root.scrollTop - globalObj.Sections[target].offsetY < -2000 ) {
 			globalObj.root.scrollTop += 500;
@@ -54,7 +54,7 @@ const Navigation = props => {
 				}, 10);
 				setTimeout(()=>{
 					setSwipe('');
-				}, 400);
+				}, 500);
 			}, 550)
 		} else {
 			globalObj.root.scrollTop = globalObj.Sections[target].offsetY;
@@ -68,7 +68,7 @@ const Navigation = props => {
 				<Anchor altClass="icon"
 					link="none"
 					fileName="otlogo-minimal.svg"
-					style={{ marginRight: 'auto' }}
+					style={{ marginRight: 'auto', padding: '.15rem' }}
 				/>
 
 				<Button altClass="minimal lang"
