@@ -2,13 +2,14 @@
 
 
 .Online-Booking {
-	display: flex;
+	/* display: flex; */
 	position: relative;
-	max-height: 100%;
-	width: max-content;
+	/* align-items: center; */
+	/* height: 100%; */
+	/* width: max-content; */
 	max-width: 90vw;
-	top: 0; right: 0; bottom: 0; left: 0;
-	margin: auto;
+	/* top: 0; right: 0; bottom: 0; left: 0;
+	margin: auto; */
 	background-color: #141718 !important;
 	background: #141718 !important;
 	overflow-x: hidden;

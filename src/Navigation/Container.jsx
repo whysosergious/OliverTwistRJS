@@ -27,39 +27,40 @@ const Navigation = props => {
 	const [ swipe, setSwipe ] = useState(null);
 
 	const handleClick = target => {
-		if ( globalObj.root.scrollTop - globalObj.Sections[target].offsetY > 2000 ) {
+		const { main: { root }, Sections } = globalObj;
+		if ( root.scrollTop - Sections[target].offsetY > 2000 ) {
 			setSwipe('up');
-			globalObj.root.scrollTop -= 500;
+			root.scrollTop -= 500;
 			setTimeout(()=>{
-				globalObj.root.style.scrollBehavior = 'unset';
-				globalObj.root.scrollTop = globalObj.Sections[target].offsetY + 500;
+				root.style.scrollBehavior = 'unset';
+				root.scrollTop = Sections[target].offsetY + 500;
 
 				setTimeout(()=>{
-					globalObj.root.style.scrollBehavior = '';
-					globalObj.root.scrollTop -= 500;
+					root.style.scrollBehavior = '';
+					root.scrollTop -= 500;
 				}, 10);
 				setTimeout(()=>{
 					setSwipe('');
 				}, 500);
 			}, 550)
-		} else if ( globalObj.root.scrollTop - globalObj.Sections[target].offsetY < -2000 ) {
-			globalObj.root.scrollTop += 500;
+		} else if ( root.scrollTop - Sections[target].offsetY < -2000 ) {
+			root.scrollTop += 500;
 			setSwipe('down');
 			setTimeout(()=>{
-				globalObj.root.style.scrollBehavior = 'unset';
-				globalObj.root.scrollTop = globalObj.Sections[target].offsetY - 500;
+				root.style.scrollBehavior = 'unset';
+				root.scrollTop = Sections[target].offsetY - 500;
 				setTimeout(()=>{
-					globalObj.root.style.scrollBehavior = '';
-					globalObj.root.scrollTop += 500;
+					root.style.scrollBehavior = '';
+					root.scrollTop += 500;
 				}, 10);
 				setTimeout(()=>{
 					setSwipe('');
 				}, 500);
 			}, 550)
 		} else {
-			globalObj.root.scrollTop = globalObj.Sections[target].offsetY;
+			root.scrollTop = Sections[target].offsetY;
 		}
-		// console.log(globalObj.root.scrollTop, globalObj.Sections[target].offsetY)
+		// console.log(root.scrollTop, Sections[target].offsetY)
 	}
 
    return (

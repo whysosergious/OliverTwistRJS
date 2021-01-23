@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './OnlineBooking.css';
 
-const OnlineBooking = props => {
+const OnlineBooking = ({ altClass }) => {
 	const widget = document.createElement('script');
 	widget.type = 'text/javascript';
 	widget.async = true;
@@ -9,7 +9,7 @@ const OnlineBooking = props => {
 	document.body.appendChild(widget);
 
 	return(
-		<div className={ `Online-Booking` }>
+		<div className={ `Online-Booking ${ altClass }` }>
 			<div class="BookingBox" placeid="f6b52" language="se">
 				<div class="BookingBoxContent">
 				</div>

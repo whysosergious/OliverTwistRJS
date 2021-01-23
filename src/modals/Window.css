@@ -5,19 +5,19 @@
 .Modal-Window {
 	display: flex;
 	position: fixed;
-	justify-content: center;
-	height: 80%;
-	/* height: max-content; */
+	/* justify-content: center; */
+	height: max-content;
 	max-height: 80%;
+	/* height: 80%; */
 	width: max-content;
-	/* width: 30rem; */
+	max-width: 95vw;
 	top: 0; right: 0; bottom: 0; left: 0;
 	margin: auto;
 	padding: 2.7rem 0;
 	border-radius: 1rem;
 	background-color: rgb(9, 17, 15);
 	overflow: hidden;
-	overflow-y: auto;
+	/* overflow-y: scroll; */
 	z-index: 4;
 }
 
@@ -54,12 +54,8 @@
 	backdrop-filter: blur(1px);
 }
 
-/* .Modal-Container.hidden, */
+.Modal-Container.hidden,
 .Business-Hours.hidden,
 .Online-Booking.hidden {
 	display: none;
-}
-
-.Modal-Container.Book {
-	display: flex;
 }

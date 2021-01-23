@@ -71,6 +71,31 @@ a {
 	/* transform-style: preserve-3d; */
 }
 
+@media (min-width: 600px) {
+	::-webkit-scrollbar {
+		width: .3rem;
+	}
+	::-webkit-scrollbar-track {
+		background: #0c1113;
+	}
+	::-webkit-scrollbar-thumb {
+		width: 1rem;
+		border-radius: 1rem;
+		background-color: rgb(3, 6, 7);
+	}
+	::-webkit-scrollbar-thumb:hover {
+		width: 1rem;
+		border-radius: 1rem;
+		background-color: rgb(0, 0, 0);
+	}
+	.idle::-webkit-scrollbar-track,
+	.idle::-webkit-scrollbar-thumb {
+		background-color: rgba(0, 0, 0, 0);
+	}
+}
+
+
+
 img {
 	user-select: none;
 }

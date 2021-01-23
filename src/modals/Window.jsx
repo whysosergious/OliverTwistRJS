@@ -9,7 +9,7 @@ import OnlineBooking from './OnlineBooking';
 
 const ModalWindow = props => {
 	const ModalWindow = {
-		initialState: 'Book',
+		initialState: 'hidden',
 	}
 	const [ state, setState ] = useGlobalObj({ ModalWindow });
 	const handleClose = () => {
