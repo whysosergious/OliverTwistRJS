@@ -1,11 +1,11 @@
 /**
  * Contact, opening hours and Google maps
  */
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import './Container.css';
 
 // zergski logic
-import { useGlobalObj } from 'logic/zergski-global-object';
+import { useGlobalObj, globalObj } from 'logic/zergski-global-object';
 
 // media
 import cornerImage from 'ass/img/contact/corner.jpg';
@@ -39,6 +39,9 @@ const ContactContainer = props => {
 	const [ headingState ] = useGlobalObj({ ContactHeading }, 'ViewportAnimated');
 	const [ hoursState ] = useGlobalObj({ HoursWrapper }, 'ViewportAnimated');
 
+	const handleClick = target => {
+		globalObj.ModalWindow.setState(target);
+	}
 
    return (
 		<>
@@ -63,6 +66,7 @@ const ContactContainer = props => {
 						<Button altClass="underline"
 							text="Boka bord online"
 							style={{ display: 'inline-block', margin: '4rem 0 2rem 0' }}
+							clicked={ ()=>handleClick('Book') }
 						/>
 						<div className="Anchor-Group">
 							<Anchor altClass="icon"

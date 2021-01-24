@@ -1,14 +1,8 @@
-.Modal-Container {
-	/* display: none; */
-}
-
 .Modal-Window {
 	display: flex;
 	position: fixed;
-	/* justify-content: center; */
 	height: max-content;
 	max-height: 80%;
-	/* height: 80%; */
 	width: max-content;
 	max-width: 95vw;
 	top: 0; right: 0; bottom: 0; left: 0;
@@ -16,9 +10,10 @@
 	padding: 2.7rem 0;
 	border-radius: 1rem;
 	background-color: rgb(9, 17, 15);
-	overflow: hidden;
-	/* overflow-y: scroll; */
-	z-index: 4;
+	/* overflow: hidden; */
+	z-index: 6;
+	opacity: 0;
+	transition: opacity .4s ease;
 }
 
 .Blur-Overlay,
@@ -28,19 +23,28 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	z-index: 4;
+	z-index: 5;
 }
 .Blur-Overlay::before {
 	content: '';
 	background-color: rgba(0, 0, 0, 0.767);
 	z-index: 1;
 	backdrop-filter: blur(20px);
+	opacity: 0;
+	transition: opacity .7s ease;
 }
 
+.blur .Blur-Overlay::before {
+	opacity: 1;
+}
+
+nav {
+	transition: opacity .6s ease;
+	will-change: opacity;
+}
 .blur nav {
-	filter: blur(10px);
+	opacity: 0;
+	z-index: -1;
 }
 
 .blur::before {
@@ -51,11 +55,23 @@
 	top: 0;
 	left: 0;
 	z-index: -1;
-	backdrop-filter: blur(1px);
+	/* backdrop-filter: blur(1px); */
 }
 
-.Modal-Container.hidden,
+
 .Business-Hours.hidden,
 .Online-Booking.hidden {
 	display: none;
+}
+
+.blur .Business-Hours.shown,
+.blur .Online-Booking.shown {
+	display: unset;
+}
+
+.Modal-Container.hidden {
+	visibility: hidden;
+}
+.Modal-Window.shown {
+	opacity: 1;
 }

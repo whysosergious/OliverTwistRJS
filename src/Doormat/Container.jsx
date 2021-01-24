@@ -1,7 +1,7 @@
 /**
  * Promotion and introductory content
  */
-import React, { useRef, createRef, useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import './Container.css';
 import styles from './Doormat.module.css';
 
@@ -11,7 +11,6 @@ import { useGlobalObj } from 'logic/zergski-global-object';
 // media
 import promoBackgroundImage from 'ass/img/promo/waob.jpg';
 import doormatBackgroundImage from 'ass/vector/files/fridge.svg';
-// import articleImage from 'ass/img/promo/waob-list-short.jpg';
 
 // components
 import Button from 'shared/Button';
@@ -28,8 +27,8 @@ const DoormatContainer = props => {
 		index: 3,
 		initialState: 'idle right',
 	}
-	const [ promoState, setPromoState ] = useGlobalObj({ Promo }, 'ViewportAnimated');
-	const [ doormatState, setDoormatState ] = useGlobalObj({ Doormat }, 'ViewportAnimated');
+	const [ promoState ] = useGlobalObj({ Promo }, 'ViewportAnimated');
+	const [ doormatState ] = useGlobalObj({ Doormat }, 'ViewportAnimated');
 
    return (
 		<>
@@ -51,11 +50,6 @@ const DoormatContainer = props => {
 					/>
 				</div>
 
-
-				{/* <ImageWrapper imgSrc={ articleImage }
-					imgDesc="List by Stephen Beumont containing Oliver Twist as one of the top 10 bars in the world to have a beer in"
-					altClass="Article-Image"
-				/> */}
 			</section>
 			<section className={ `Doormat-Container dark` } ref={ Doormat.ref }>
 				<ImageWrapper imgSrc={ doormatBackgroundImage }

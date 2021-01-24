@@ -28,12 +28,14 @@ const Navigation = props => {
 
 	const handleClick = target => {
 		const { main: { root }, Sections } = globalObj;
-		if ( root.scrollTop - Sections[target].offsetY > 2000 ) {
+		let targetOffset = Sections[target]?.offsetY ?? target;	// ***'obj?.val' not supported by Android Opera and Samsung internet
+
+		if ( root.scrollTop - targetOffset > 2000 ) {
 			setSwipe('up');
 			root.scrollTop -= 500;
 			setTimeout(()=>{
 				root.style.scrollBehavior = 'unset';
-				root.scrollTop = Sections[target].offsetY + 500;
+				root.scrollTop = targetOffset + 500;
 
 				setTimeout(()=>{
 					root.style.scrollBehavior = '';
@@ -43,12 +45,12 @@ const Navigation = props => {
 					setSwipe('');
 				}, 500);
 			}, 550)
-		} else if ( root.scrollTop - Sections[target].offsetY < -2000 ) {
+		} else if ( root.scrollTop - targetOffset < -2000 ) {
 			root.scrollTop += 500;
 			setSwipe('down');
 			setTimeout(()=>{
 				root.style.scrollBehavior = 'unset';
-				root.scrollTop = Sections[target].offsetY - 500;
+				root.scrollTop = targetOffset - 500;
 				setTimeout(()=>{
 					root.style.scrollBehavior = '';
 					root.scrollTop += 500;
@@ -58,18 +60,22 @@ const Navigation = props => {
 				}, 500);
 			}, 550)
 		} else {
-			root.scrollTop = Sections[target].offsetY;
+			root.scrollTop = targetOffset;
 		}
-		// console.log(root.scrollTop, Sections[target].offsetY)
+	}
+
+	const openModal = target => {
+		globalObj.ModalWindow.setState(target);
 	}
 
    return (
       <nav className={ `${ state.sticky } ${ swipe }` } ref={ Nav.ref }>
 			<div className={ `Quick-Bar va` }>
 				<Anchor altClass="icon"
-					link="none"
+					link=""
 					fileName="otlogo-minimal.svg"
 					style={{ marginRight: 'auto', padding: '.15rem' }}
+					clicked={ ()=>handleClick(0) }
 				/>
 
 				<Button altClass="minimal lang"
@@ -100,8 +106,7 @@ const Navigation = props => {
 				/>
 				<Button altClass="minimal book"
 					text="Boka Bord"
-					clicked={ '' }
-					// style={{ marginLeft: '10%' }}
+					clicked={ ()=>openModal('Book') }
 				/>
 			</div>
 

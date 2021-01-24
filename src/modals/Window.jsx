@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Window.css';
 import { globalObj, useGlobalObj } from 'logic/zergski-global-object';
 
@@ -12,21 +12,35 @@ const ModalWindow = props => {
 		initialState: 'hidden',
 	}
 	const [ state, setState ] = useGlobalObj({ ModalWindow });
-	const handleClose = () => {
-		console.log('close')
-		// globalObj.main.ref.classList.add('blur');
+	const [ windowState, setWindowState ] = useState(false);
 
+
+	const handleClose = () => {
+		setWindowState(false);
+		setTimeout(() => {
+			globalObj.main.ref.classList.remove('blur');
+			setTimeout(() => {
+				setState('hidden');
+			}, 1000);
+		}, 400);
+	}
+
+	const animateModal = () => {
+		globalObj.main.ref.classList.add('blur');
+		setTimeout(()=>{
+			setWindowState(true);
+		}, 400);
 	}
 
 	useEffect(() => {
-
-	}, [])
+		state !== 'hidden' && animateModal();
+	}, [state]);
 
 
 	return(
 		<div className={ `Modal-Container ${ state }` }>
-			<div className="Blur-Overlay"></div>
-			<div className={ `Modal-Window striped` }>
+			<div className={ `Blur-Overlay ${ state !== 'hidden' ? 'shown' : 'hidden' }` }></div>
+			<div className={ `Modal-Window striped ${ windowState ? 'shown' : 'hidden' }` }>
 					<BusinessHours altClass={ state === 'Hours' ? 'shown' : 'hidden' } />
 					<OnlineBooking altClass={ state === 'Book' ? 'shown' : 'hidden' } />
 

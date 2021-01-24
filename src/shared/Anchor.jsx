@@ -4,11 +4,10 @@
 import React, { useState, useEffect } from 'react';
 import './Anchor.css';
 
-const Anchor = props => {
-	const { text, altClass, style, link, fileName } = props;
+const Anchor = ({ text, altClass, style, link, fileName, clicked }) => {
 
 	// dynamically import media :)
-	const [icon, setIcon ] = useState(null);
+	const [ icon, setIcon ] = useState(null);
 
 	useEffect(() => {
 		import(`ass/vector/icons/files/${ fileName }`).then(ico => {
@@ -28,13 +27,16 @@ const Anchor = props => {
 		:
 		null;
 
-	// console.log(icon)
+	const handleClick = event => {
+		event.preventDefault();
+		clicked();
+	}
 
    return (
       <a className={ `Anchor ${ altClass }` }
 			style={ style }
 			href={ link }
-			onClick={ props.clicked }
+			onClick={ clicked && handleClick }
 		>
 			{ iconSrc }
 			<h4>{ text }</h4>

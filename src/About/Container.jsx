@@ -47,9 +47,7 @@ const AboutContainer = props => {
 		index: 0,
 		initialState: 'idle',
 	}
-	// for ( let i=0; i<4; i++) {
 
-	// }
 	const [ state, setState ] = useGlobalObj({ About }, 'Sections');
 	const [ headingState ] = useGlobalObj({ AboutHeading }, 'ViewportAnimated');
 	const [ group0State ] = useGlobalObj({ AboutGroup0 }, 'ViewportAnimated');

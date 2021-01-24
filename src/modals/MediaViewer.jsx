@@ -21,17 +21,17 @@ mediaJSON.forEach((e) => e.src = localhost + e.src );
 let current = 'can1';
 let canvas = {
 	can1: {
-		pos: 'center',
+		pos: 'current',
 		trans: true,
 		source: mediaJSON[0].src,
 	},
 	can2: {
-		pos: 'right',
+		pos: 'next',
 		trans: true,
 		source: mediaJSON[1].src,
 	},
 	can3: {
-		pos: 'left',
+		pos: 'prev',
 		trans: false,
 		source: mediaJSON[mediaJSON.length-1].src,
 	}
@@ -42,9 +42,7 @@ let canvas = {
 const iterator = ( array, setState, initIndex ) => {
 	let index = initIndex;
 	let count = array.length - 1;	// content count
-	let nextSource = index+2;		// next imagesource to load
-	let nextCanvas = 0;	//	canvas position
-	let nextImageSource = nextCanvas - 1;
+	let nextSource = index+2;		// next image source to load
 
 	return {
 		next() {
@@ -52,9 +50,9 @@ const iterator = ( array, setState, initIndex ) => {
 			nextSource = index+1 > count ? 0 : index+1;
 
 			Object.entries(canvas).forEach( c => {
-				canvas[c[0]].pos = c[1].pos === 'center' ? 'left' : c[1].pos === 'right' ? 'center' : 'right';
-				c[1].pos === 'center' && (current = c[0]);
-				if ( c[1].pos === 'right' ) {
+				canvas[c[0]].pos = c[1].pos === 'current' ? 'prev' : c[1].pos === 'next' ? 'current' : 'next';
+				c[1].pos === 'current' && (current = c[0]);
+				if ( c[1].pos === 'next' ) {
 					canvas[c[0]].trans = false;
 					canvas[c[0]].source = mediaJSON[nextSource].src;
 				} else {
@@ -72,9 +70,9 @@ const iterator = ( array, setState, initIndex ) => {
 			nextSource = index-1 < 0 ? count : index-1;
 
 			Object.entries(canvas).forEach( c => {
-				canvas[c[0]].pos = c[1].pos === 'center' ? 'right' : c[1].pos === 'left' ? 'center' : 'left';
-				c[1].pos === 'center' && (current = c[0]);
-				if ( c[1].pos === 'left' ) {
+				canvas[c[0]].pos = c[1].pos === 'current' ? 'next' : c[1].pos === 'prev' ? 'current' : 'prev';
+				c[1].pos === 'current' && (current = c[0]);
+				if ( c[1].pos === 'prev' ) {
 					canvas[c[0]].trans = false;
 					canvas[c[0]].source = mediaJSON[nextSource].src;
 				} else {
@@ -130,17 +128,17 @@ const MediaViewer = props => {
 			current = 'can1';
 			canvas = {
 				can1: {
-					pos: 'center',
+					pos: 'current',
 					trans: false,
 					source: mediaJSON[index].src,
 				},
 				can2: {
-					pos: 'right',
+					pos: 'next',
 					trans: false,
 					source: mediaJSON[index === mediaJSON.length-1 ? 0 : index+1].src,
 				},
 				can3: {
-					pos: 'left',
+					pos: 'prev',
 					trans: false,
 					source: mediaJSON[index === 0 ? mediaJSON.length-1 : index-1].src,
 				}
@@ -159,8 +157,6 @@ const MediaViewer = props => {
 		setTimeout(()=>{
 			globalObj.MediaViewer.setState({ display: 'hidden' });
 		}, 400)
-
-		// document.body.classList.remove('scroll-lock');
 	}
 
 

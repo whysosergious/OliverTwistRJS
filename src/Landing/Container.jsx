@@ -4,10 +4,16 @@
 import React from 'react';
 import './Container.css';
 import Button from 'shared/Button';
+import { globalObj } from 'logic/zergski-global-object';
 
 // components
 
 const LandingContainer = props => {
+
+	const handleClick = target => {
+		globalObj.ModalWindow.setState(target);
+	}
+
 	return (
 		<section className="Landing-Container">
 
@@ -21,9 +27,11 @@ const LandingContainer = props => {
 			<div className="Button-Group">
 				<Button altClass="underline small"
 					text="Våra Öppettider"
+					clicked={ ()=>handleClick('Hours') }
 				/>
 				<Button altClass="cta"
 					text="Boka bord"
+					clicked={ ()=>handleClick('Book') }
 				/>
 			</div>
 		</section>

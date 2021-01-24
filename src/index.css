@@ -72,6 +72,9 @@ a {
 }
 
 @media (min-width: 600px) {
+	#root {
+		scrollbar-width: thin;
+	}
 	::-webkit-scrollbar {
 		width: .3rem;
 	}
