@@ -4,7 +4,7 @@
 import React from 'react';
 import './Container.css';
 import Button from 'shared/Button';
-import { globalObj } from 'logic/zergski-global-object';
+import { globalObj } from 'zergski-global';
 
 // components
 

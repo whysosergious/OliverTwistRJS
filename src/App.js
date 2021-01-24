@@ -1,16 +1,16 @@
 // import logo from './logo.svg';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import './App.css';
 import './AppGeneral.css';
 import './animation.css';
 
 // zergski logic
-import { createObserver, queueFrame } from 'logic/zergski-intersection-observer';
-import { globalObj } from 'logic/zergski-global-object';
+import { createObserver, queueFrame } from 'zergski-global';
+import { globalObj } from 'zergski-global';
 
 
 // logic
-import { ViewportLogic } from 'logic/viewport';
+// import { ViewportLogic } from 'logic/viewport';
 
 // nav
 import Navigation from './Navigation/Container';

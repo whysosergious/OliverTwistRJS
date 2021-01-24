@@ -2,7 +2,7 @@
  * News post component
  */
 import React, { useRef, useEffect } from 'react';
-import { useGlobalObj, globalObj } from 'logic/zergski-global-object';
+import { useGlobalObj, globalObj } from 'zergski-global';
 
 // components
 import ImageWrapper from 'shared/ImageWrapper';

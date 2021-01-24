@@ -5,7 +5,7 @@ import React, { useRef } from 'react';
 import './Container.css';
 
 // zergski logic
-import { useGlobalObj, globalObj } from 'logic/zergski-global-object';
+import { useGlobalObj, globalObj } from 'zergski-global';
 
 //media
 import tempImage1 from 'ass/img/gallery/gal-temp1.jpg';

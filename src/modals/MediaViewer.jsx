@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./MediaViewer.css";
-import { useGlobalObj, globalObj } from 'logic/zergski-global-object';
+import { useGlobalObj, globalObj } from 'zergski-global';
 
 // content JSON
 import { mediaJSON } from 'logic/content-collections';
@@ -100,7 +100,7 @@ const MediaViewer = props => {
 		contentIndex: 0,
 		initialState: { display: 'hidden' },
 	}
-	const [ viewerState, setViewerState ] = useGlobalObj({ MediaViewer });
+	const [ viewerState ] = useGlobalObj({ MediaViewer });
 	const [ state, setState ] = useState({
 		...canvas,
 		counter: 1,

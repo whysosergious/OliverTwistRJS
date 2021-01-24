@@ -5,7 +5,7 @@ import React, { useRef } from 'react';
 import './Container.css';
 
 // zergski logic
-import { useGlobalObj } from 'logic/zergski-global-object';
+import { useGlobalObj } from 'zergski-global';
 
 // media
 import repslagarBackground from 'ass/vector/files/entrance.svg';

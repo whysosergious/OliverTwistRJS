@@ -1,11 +1,9 @@
 /**
- * references and global hooks need to be implemented
- * smarlty as to not limit component reusability
+ * Collect hooks, references and other needed data that can be accessed wherever it's imported.
+ * Names, structure and methods are all still WIP. As this is the first iteration of the
+ * the module.
  */
 import { useEffect, useState } from 'react';
-// import { Test } from 'App';
-
-
 
 // global data, references, functions and hooks
 export const globalObj = {};
@@ -14,7 +12,8 @@ globalObj.getOffsets = function(group) {
 }
 // blueprint of method object that's copied and merged with the reference object
 const globalObjMethods = {
-	getOffsetY() {	// ref offset getter
+	// ref offset getter
+	getOffsetY() {
 		this.offsetY = this.ref.offsetTop;
 	},
 	init( group, key, state, dispatch ) {		// initial method with hook assignment
@@ -53,3 +52,13 @@ export const useGlobalObj = ( objectEntry, group = null) => {
 }
 
 export default useGlobalObj;
+
+
+/**
+ * Known issue **
+ *
+ * Currently a few component references are not initialized when root is mounted.
+ * Requiring recalculation of element offsets. And while we can get them every time directly from the
+ * references, those are reads we can spare the browser.
+ * We can otherwise get them individually once at the start, and then on known changes.
+ */

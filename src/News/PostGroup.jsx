@@ -2,7 +2,7 @@
  * News post group component
  */
 import React, { useEffect, useState } from 'react';
-import { globalObj } from 'logic/zergski-global-object';
+import { globalObj } from 'zergski-global';
 
 // components
 import NewsPost from './Post';

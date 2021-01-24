@@ -14,25 +14,3 @@ export const mediaJSON = [
 	{ id: 8, src: 'ass/img/gallery/gal-temp8.jpg', title: 'Gallery Image', description: 'At Oliver Twist Stockholm' },
 	{ id: 9, src: 'ass/img/gallery/gal-temp9.jpg', title: 'Gallery Image', description: 'At Oliver Twist Stockholm' },
 ]
-
-// export media;
-// export const media = () => {
-// 	console.log( [`media${1}`] )
-// 	return media1;
-// }
-
-
-
-
-
-
-
-
-
-// pseudo code for future handling
-
-// async function imageLoader() {
-// 	const request = await fetch('https://my/images/on/a/cdn');
-// 	const response = await request.json();
-// 	return response.images
-// }

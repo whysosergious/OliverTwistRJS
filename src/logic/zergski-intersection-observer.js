@@ -1,6 +1,5 @@
 /**
- * Intersection Observer for animation module
- * with global hooks
+ * Intersection Observer and async raf. Needs cleanup and documentation.
  */
 import { globalObj } from 'logic/zergski-global-object';
 
@@ -9,7 +8,7 @@ let rafTick = false;
 const rafQueue = [];
 /**
  * Execute a function or method (or set a state)
- * TODO!: Creating a queue array that removes duplicate or unneded action and executes
+ * TODO!: Creating a queue array that removes duplicate or unneeded action and executes
  * the rest in order
  * @param {Function} action
  */
@@ -118,23 +117,29 @@ const createObserver = ( name, root, targets, handler, rootMargin=['0px 0px 0px 
 export { createObserver };
 
 
-
-
 /**
  * NOTES **
  *
  * target.classList.add('stuck');
- * isInViewCol[zKey].set(true);	// hooks were less performant by almost half(53ms in just scripting)
- * of course refs should be used sparingly. But mixing css & js animation is freaking great!!
- * plus! intersectionObserver completely eliminates the need to handle event listeners..
+ * isInViewCol[zKey].set(true);	// hooks were less performant by almost half( 653ms in just scripting )
+ * of course refs should be used sparingly. But mixing css & js animation seems to work great!
+ * plus, intersectionObserver completely eliminates the need to handle event listeners..
  * Not that event listeners don't have their use anymore.
  */
 
 
 
-
-
-
  /**
-  * queueFrame() is a very useful function!
+  * queueFrame() executes passed function or sets value asynchronously through a raf.
+  * Queueing actions in array until they are run or applied. Though I need to find a different
+  * way of triggering css as using custom hooks doesn't yield a lot because hooks are in
+  * themselves asynchronous.
+  * Recorded a 55% performance boost when triggering through 'ref.classList'.
+  * ( 1057ms in only scripting, hard to compare to previous benchmarks though as the
+  * workload was significantly different )
+  * While refs are imperative, most React animation libraries use them and as previously stated
+  * references are required for the use of 'intersectionObserver'.
+  * The important thing to keep in mind is, when using classes, that changes are reset
+  * when components rerender.
+  * Which has many workarounds.
   */

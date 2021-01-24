@@ -6,7 +6,7 @@ import './Container.css';
 import Button from 'shared/Button';
 
 // zergski logic
-import { useGlobalObj } from 'logic/zergski-global-object';
+import { useGlobalObj } from 'zergski-global';
 
 // media
 import menuImage from 'ass/img/menu.jpg';
@@ -29,7 +29,7 @@ const MenuContainer = props => {
 		index: 4,
 		initialState: 'idle bottom',
 	}
-	const [ state, setState ] = useGlobalObj({ Menu }, 'Sections');
+	const [ state ] = useGlobalObj({ Menu }, 'Sections');
 	const [ headingState ] = useGlobalObj({ MenuHeading }, 'ViewportAnimated');
 	const [ buttonsState ] = useGlobalObj({ MenuButtons }, 'ViewportAnimated');
 

@@ -1,13 +1,7 @@
 /**
  * Everything related to viewport
  */
-import React, { useContext, useEffect } from 'react';
-
-// contexts
-import { kernel } from 'logic/kernel';		// import our singleton
-
-
-
+import React, { useEffect } from 'react';
 
 const _local = {
 	height: window.innerHeight,
@@ -33,14 +27,11 @@ const _local = {
 	},
 }
 _local.calc();
-var currentDevice = _local.device;
-// var currentOrientation = '';
-var tick = false;
+let currentDevice = _local.device;
+// let currentOrientation = '';
+let tick = false;
 
 const ViewportLogic = props => {
-	// link component to context object
-	const { _gl } = useContext(kernel);
-	_gl.init([ 'Viewport', _local ]);
 
 	_local.setVh();
 

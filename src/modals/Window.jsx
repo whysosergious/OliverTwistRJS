@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Window.css';
-import { globalObj, useGlobalObj } from 'logic/zergski-global-object';
+import { globalObj, useGlobalObj } from 'zergski-global';
 
 // components
 import Anchor from 'shared/Anchor';

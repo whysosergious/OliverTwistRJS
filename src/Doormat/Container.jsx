@@ -6,7 +6,7 @@ import './Container.css';
 import styles from './Doormat.module.css';
 
 // zergski logic
-import { useGlobalObj } from 'logic/zergski-global-object';
+import { useGlobalObj } from 'zergski-global';
 
 // media
 import promoBackgroundImage from 'ass/img/promo/waob.jpg';

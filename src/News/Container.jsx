@@ -1,11 +1,11 @@
 /**
  * News synced to Instagram
  */
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import './Container.css';
 
 // zergski logic
-import { globalObj, useGlobalObj } from 'logic/zergski-global-object';
+import { useGlobalObj } from 'zergski-global';
 
 // components
 import PostGroup from './PostGroup';
@@ -54,7 +54,6 @@ const NewsContainer = props => {
 			<Button altClass="dark"
 				style={{ marginTop: '7rem' }}
 				text={ 'Ladda fler' }
-
 				clicked={ loadPosts }
 			/>
       </section>
