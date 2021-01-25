@@ -6,7 +6,7 @@ import './Container.css';
 import styles from './Doormat.module.css';
 
 // zergski logic
-import { useGlobalObj } from 'zergski-global';
+import { useGlobalObj, globalObj } from 'zergski-global';
 
 // media
 import promoBackgroundImage from 'ass/img/promo/waob.jpg';
@@ -29,6 +29,10 @@ const DoormatContainer = props => {
 	}
 	const [ promoState ] = useGlobalObj({ Promo }, 'ViewportAnimated');
 	const [ doormatState ] = useGlobalObj({ Doormat }, 'ViewportAnimated');
+
+	const scrollToMenu = () => {
+		globalObj.Sections.Nav.scrollTo('Menu');
+	}
 
    return (
 		<>
@@ -68,6 +72,7 @@ const DoormatContainer = props => {
 					<Button altClass="underline small"
 						text="Läs våran meny"
 						style={{ marginTop: '2rem' }}
+						clicked={ scrollToMenu }
 					/>
 				</div>
 			</section>

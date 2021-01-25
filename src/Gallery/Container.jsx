@@ -6,6 +6,7 @@ import './Container.css';
 
 // zergski logic
 import { useGlobalObj, globalObj } from 'zergski-global';
+import { routerHook } from 'logic/router';
 
 //media
 import tempImage1 from 'ass/img/gallery/gal-temp1.jpg';
@@ -19,7 +20,7 @@ import tempImage8 from 'ass/img/gallery/gal-temp8.jpg';
 import tempImage9 from 'ass/img/gallery/gal-temp9.jpg';
 
 // components
-import ImageWrapper from 'shared/ImageWrapper';
+import GalleryGrid from 'shared/GalleryGrid';
 import Button from 'shared/Button';
 
 const GalleryContainer = props => {
@@ -35,16 +36,21 @@ const GalleryContainer = props => {
 		index: 0,
 		initialState: 'idle',
 	}
-	const GalleryGrid = {
-		ref: useRef(null),
-		index: 1,
-		initialState: 'idle',
-	}
+	// const GalleryGrid = {
+	// 	ref: useRef(null),
+	// 	index: 1,
+	// 	initialState: 'idle',
+	// }
 	const [ state, setState ] = useGlobalObj({ Gallery }, 'Sections');
 	const [ headingState ] = useGlobalObj({ GalleryHeading }, 'ViewportAnimated');
-	const [ gridState ] = useGlobalObj({ GalleryGrid }, 'ViewportAnimated');
-	const handleClick = index => {
-		MediaViewer.setState({ display: 'show', index });
+	// const [ gridState ] = useGlobalObj({ GalleryGrid }, 'ViewportAnimated');
+
+	// const handleClick = index => {
+	// 	MediaViewer.setState({ display: 'show', index });
+	// }
+
+	const routeToGallery = () => {
+		routerHook.routeTo('gallery');
 	}
 
    return (
@@ -55,55 +61,11 @@ const GalleryContainer = props => {
 				</h1>
 			</div>
 
-			<div className={ `Gallery-Grid ${ gridState } va` } ref={ GalleryGrid.ref }>
-				<ImageWrapper imgSrc={ tempImage1 }
-					imgDesc="temp"
-					index={ 0 }
-					clicked={ handleClick }
-				/>
-				<ImageWrapper imgSrc={ tempImage2 }
-					imgDesc="temp"
-					index={ 1 }
-					clicked={ handleClick }
-				/>
-				<ImageWrapper imgSrc={ tempImage3 }
-					imgDesc="temp"
-					index={ 2 }
-					clicked={ handleClick }
-				/>
-				<ImageWrapper imgSrc={ tempImage4 }
-					imgDesc="temp"
-					index={ 3 }
-					clicked={ handleClick }
-				/>
-				<ImageWrapper imgSrc={ tempImage5 }
-					imgDesc="temp"
-					index={ 4 }
-					clicked={ handleClick }
-				/>
-				<ImageWrapper imgSrc={ tempImage6 }
-					imgDesc="temp"
-					index={ 5 }
-					clicked={ handleClick }
-				/>
-				<ImageWrapper imgSrc={ tempImage7 }
-					imgDesc="temp"
-					index={ 6 }
-					clicked={ handleClick }
-				/>
-				<ImageWrapper imgSrc={ tempImage8 }
-					imgDesc="temp"
-					index={ 7 }
-					clicked={ handleClick }
-				/>
-				<ImageWrapper imgSrc={ tempImage9 }
-					imgDesc="temp"
-					index={ 8 }
-					clicked={ handleClick }
-				/>
-			</div>
+			<GalleryGrid />
+
 			<Button text="Fler bilder"
 				style={{ marginTop: '5rem' }}
+				clicked={ routeToGallery }
 			/>
       </section>
    );

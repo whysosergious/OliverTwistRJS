@@ -3,7 +3,7 @@ import "./MediaViewer.css";
 import { useGlobalObj, globalObj } from 'zergski-global';
 
 // content JSON
-import { mediaJSON } from 'logic/content-collections';
+import mediaJSON from 'logic/content-collections';
 
 // components
 import Anchor from 'shared/Anchor';

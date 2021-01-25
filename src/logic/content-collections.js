@@ -2,8 +2,10 @@
  * All media for ease of use
  */
 
+
+
 // will be imported from db with an external json
-export const mediaJSON = [
+const mediaJSON = [
 	{ id: 1, src: 'ass/img/gallery/gal-temp1.jpg', title: 'Gallery Image', description: 'At Oliver Twist Stockholm' },
 	{ id: 2, src: 'ass/img/gallery/gal-temp2.jpg', title: 'Gallery Image', description: 'At Oliver Twist Stockholm' },
 	{ id: 3, src: 'ass/img/gallery/gal-temp3.jpg', title: 'Gallery Image', description: 'At Oliver Twist Stockholm' },
@@ -13,4 +15,6 @@ export const mediaJSON = [
 	{ id: 7, src: 'ass/img/gallery/gal-temp7.jpg', title: 'Gallery Image', description: 'At Oliver Twist Stockholm' },
 	{ id: 8, src: 'ass/img/gallery/gal-temp8.jpg', title: 'Gallery Image', description: 'At Oliver Twist Stockholm' },
 	{ id: 9, src: 'ass/img/gallery/gal-temp9.jpg', title: 'Gallery Image', description: 'At Oliver Twist Stockholm' },
-]
+];
+
+export default mediaJSON;

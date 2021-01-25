@@ -11,7 +11,7 @@
 	align-items: center;
 	height: 37rem;
 	width: 100%;
-	transform: translate3d(0,0,30px);
+	/* transform: translate3d(0,0,30px); */
 }
 
 .Menu-Container .Button-Group {

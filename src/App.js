@@ -3,14 +3,14 @@ import { useEffect, useRef } from 'react';
 import './App.css';
 import './AppGeneral.css';
 import './animation.css';
+import { Redirect, Route, BrowserRouter as Router } from "react-router-dom";
 
 // zergski logic
 import { createObserver, queueFrame } from 'zergski-global';
-import { globalObj } from 'zergski-global';
+import { useGlobalObj, globalObj } from 'zergski-global';
+import { routerHook, useRouterHook } from 'logic/router';
 
-
-// logic
-// import { ViewportLogic } from 'logic/viewport';
+import Home from './Pages/Home';
 
 // nav
 import Navigation from './Navigation/Container';
@@ -24,6 +24,9 @@ import MenuContainer from './Menu/Container';
 import AboutContainer from './About/Container';
 import ContactContainer from './Contact/Container';
 import FooterContainer from './Footer/Container';
+
+// Routed pages
+import GalleryPage from 'Pages/Gallery/Container';
 
 // Modals
 import MediaViewer from 'modals/MediaViewer';
@@ -60,7 +63,7 @@ const handleViewportAnimated = ({ entry, observer, prevRatio }) => {
 }
 
 const App = () => {
-	// const [ states, setStates ] = useState({ stuck: false });
+	const [ route ] = useRouterHook(null);
 
 	const main = {
 		root: useRef(null),
@@ -95,37 +98,47 @@ const App = () => {
 			1
 		);
 
-		console.log(globalObj)
+
 	}, []);
 
 	return (
-		<main className="App" ref={ main.ref }>
-			<LandingContainer />
-			<Navigation />
-			<header className="App-header">
-				<Anchor altClass="icon"
-					link="none"
-					fileName="otlogo-white-simple.svg"
-					style={{ marginRight: 'auto', height: '2.4rem' }}
-				/>
 
-				<Button altClass="minimal lang"
-					text="Eng."
-					clicked={ '' }
-				/>
-			</header>
 
-			<DoormatContainer />
-			<NewsContainer />
-			<GalleryContainer />
-			<MenuContainer />
-			<AboutContainer />
-			<ContactContainer />
-			<FooterContainer />
 
-			<MediaViewer />
-			<ModalWindow />
-		</main>
+			<main className="App" ref={ main.ref }>
+				{/* <LandingContainer />
+				<Navigation />
+				<header className="App-header">
+					<Anchor altClass="icon"
+						link="none"
+						fileName="otlogo-white-simple.svg"
+						style={{ marginRight: 'auto', height: '2.4rem' }}
+					/>
+
+					<Button altClass="minimal lang"
+						text="Eng."
+						clicked={ '' }
+					/>
+				</header>
+
+				<DoormatContainer />
+				<NewsContainer />
+				<GalleryContainer />
+				<MenuContainer />
+				<AboutContainer />
+				<ContactContainer />
+				<FooterContainer />
+
+				<MediaViewer />
+				<ModalWindow /> */}
+				<Router>
+		{ route ? <Redirect to={ route } /> : '' }
+		 	<Route path="/" component={ Home } />
+      	<Route path="/gallery" component={ GalleryPage } />
+		</Router>
+
+			</main>
+
 	);
 }
 

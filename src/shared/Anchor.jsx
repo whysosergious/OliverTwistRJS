@@ -36,6 +36,8 @@ const Anchor = ({ text, altClass, style, link, fileName, clicked }) => {
       <a className={ `Anchor ${ altClass }` }
 			style={ style }
 			href={ link }
+			target="_blank"
+			rel="noreferrer"
 			onClick={ clicked && handleClick }
 		>
 			{ iconSrc }

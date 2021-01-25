@@ -1,7 +1,7 @@
 /**
  *	Navigation menu
  */
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './Container.css';
 
 // zergski logic
@@ -67,6 +67,10 @@ const Navigation = props => {
 	const openModal = target => {
 		globalObj.ModalWindow.setState(target);
 	}
+
+	useEffect(() => {
+		globalObj.Sections.Nav.scrollTo = handleClick;
+	}, [])
 
    return (
       <nav className={ `${ state.sticky } ${ swipe }` } ref={ Nav.ref }>

@@ -80,7 +80,7 @@ const ContactContainer = props => {
 								fileName="email.svg"
 							/>
 							<Anchor altClass="icon"
-								link="google.com"
+								link="https://goo.gl/maps/TQrd58turU1F49sWA"
 								text="Repslagargatan 6, Södermalm"
 								fileName="pin.svg"
 							/>
