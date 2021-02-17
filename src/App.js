@@ -6,8 +6,8 @@ import './animation.css';
 import { Redirect, Route, BrowserRouter as Router } from "react-router-dom";
 
 // zergski logic
-import { createObserver, queueFrame } from 'zergski-global';
-import { useGlobalObj, globalObj } from 'zergski-global';
+import { useGlobalObj, globalObj, createObserver, queueFrame } from 'zergski-global';
+import 'logic/zergski-content-manager';
 import { routerHook, useRouterHook } from 'logic/router';
 
 import Home from './Pages/Home';
@@ -98,7 +98,10 @@ const App = () => {
 			1
 		);
 
-
+		// window.onclick = e => {
+		// 	console.log(e.target);
+		// 	console.log(e.target.inerHtml)
+		// }
 	}, []);
 
 	return (

@@ -1,7 +1,7 @@
 /**
  * Promotion and introductory content
  */
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './Container.css';
 import styles from './Doormat.module.css';
 
@@ -15,6 +15,74 @@ import doormatBackgroundImage from 'ass/vector/files/fridge.svg';
 // components
 import Button from 'shared/Button';
 import ImageWrapper from 'shared/ImageWrapper';
+
+
+var ZCM = {
+	focus: '',
+	shared: {
+		moreButton: 'Läs Mer'
+	}
+};
+
+
+
+
+
+const fswrite = 'http://localhost/brokenOt/fw.php';
+
+// const jsonObject = { hello: 'server', showme: 'youre working' };
+
+async function postData(dataObj) {
+
+	const response = await fetch(
+		fswrite,
+		{
+			method: "POST",
+			headers: {
+				    'Content-Type': 'application/json',
+				  },
+			body: JSON.stringify(dataObj)
+		}
+	);
+
+	const data = await response.text();
+
+	console.log(data);
+
+}
+
+const _zSave = () => {
+	ZCM.focus.removeAttribute('contentEditable');
+	ZCM.focus = '';
+	postData(ZCM);
+}
+const _zEdit = ( event ) => {
+	let { target } = event;
+	ZCM[target.dataset.zsection][target.dataset.zname] = target.innerHTML;
+	console.log(ZCM);
+}
+const _zFocus = ( event ) => {
+	let { target } = event;
+	ZCM.focus = target;
+	target.setAttribute('contentEditable', '');
+	// target.onKeyDown = (e) => {
+	// 	console.log(e);
+	// }
+	console.log(target.dataset.zname);
+}
+
+const _zcm = ( name, section='shared' ) => {
+	ZCM[section] || (ZCM[section] = {});
+	let content = ZCM[section][name] ?? name;
+
+	return <z-e data-zname={ name } data-zsection={ section } 
+		onClick={ _zFocus } 
+		onInput={ _zEdit } 
+		onBlur={ _zSave }
+		dangerouslySetInnerHTML={{ __html: content }}
+		/>
+}
+
 
 const DoormatContainer = props => {
 	const Promo = {
@@ -34,6 +102,27 @@ const DoormatContainer = props => {
 		globalObj.Sections.Nav.scrollTo('Menu');
 	}
 
+	useEffect(() => {
+		// fetching content JSON
+		fetch('http://localhost/brokenOt/test/data.json'
+		,{
+			headers : { 
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+			}
+		}
+		)
+			.then(function(response){
+				console.log(response)
+				return response.json();
+			})
+			.then(function(myJson) {
+				
+				ZCM = myJson;
+				console.log(ZCM);
+			});
+	}, [])
+
    return (
 		<>
 			<section className={ `Promo-Container accent` } ref={ Promo.ref }>
@@ -44,12 +133,11 @@ const DoormatContainer = props => {
 
 
 				<div className={ `${ styles.headingGroup } ${ promoState } va` }>
-					<h1><span>Bland de</span>bästa i världen</h1>
-					<h3>
-						I den nya utgåvan av World Atlas of Beer för 2021 så smiter en sylta på Repslagargatan in på deras 10 i topp lista över världens bästa ställen att dricka öl på!
+					<h1><span>{ _zcm('headingSpan', 'promo') }</span>{ _zcm('heading', 'promo') }</h1>
+					<h3>{ _zcm('body', 'promo') }
 					</h3>
 					<Button altClass="underline"
-						text="Läs mer"
+						text={ _zcm('moreButton') }
 						style={{ marginTop: '3rem' }}
 					/>
 				</div>
