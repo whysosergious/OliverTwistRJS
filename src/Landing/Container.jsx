@@ -6,9 +6,10 @@ import './Container.css';
 import Button from 'shared/Button';
 import { globalObj } from 'zergski-global';
 
-// components
+// logic
+import { ZCM } from 'logic/zcm';
 
-const LandingContainer = props => {
+const LandingContainer = () => {
 
 	const handleClick = target => {
 		globalObj.ModalWindow.setState(target);
@@ -20,17 +21,17 @@ const LandingContainer = props => {
 
 			<div className="Greeting-Group">
 
-				<h1><span>Välkommen hem till</span>Oliver Twist</h1>
-				<h2>-Stockholm-</h2>
+				<h1><span>{ ZCM.landing.heading_span }</span>{ ZCM.landing.heading }</h1>
+				<h2>{ `-${ ZCM.landing.subheading }-` }</h2>
 			</div>
 
 			<div className="Button-Group">
 				<Button altClass="underline small"
-					text="Våra Öppettider"
+					text={ ZCM.landing.button_hours }
 					clicked={ ()=>handleClick('Hours') }
 				/>
 				<Button altClass="cta"
-					text="Boka bord"
+					text={ ZCM.shared.buttons.book }
 					clicked={ ()=>handleClick('Book') }
 				/>
 			</div>

@@ -7,6 +7,7 @@ import Button from 'shared/Button';
 
 // zergski logic
 import { useGlobalObj } from 'zergski-global';
+import { ZCM } from 'logic/zcm';
 
 // media
 import menuImage from 'ass/img/menu.jpg';
@@ -44,24 +45,22 @@ const MenuContainer = props => {
 				/>
 				<div className={ `Heading-Group ${ headingState } va` } ref={ MenuHeading.ref }>
 					<h1>
-						Våran Meny
+						{ ZCM.menu.heading }
 					</h1>
 					<h3>
-						Till ölen, och våra väl utvalda viner, hittar du en meny vi serverar med stolthet. All mat är gjord från grunden av bästa möjliga råvaror tillagad med kärlek.
+						{ ZCM.menu.body }
 					</h3>
 				</div>
 			</div>
 
 			<div className={ `Button-Group ${ buttonsState } va` } ref={ MenuButtons.ref }>
-				<Button altClass="menu"
-					text="Lunch"
-				/>
-				<Button altClass="menu"
-					text="A la Carté"
-				/>
-				<Button altClass="menu"
-					text="Öl & Dryck"
-				/>
+				{
+					ZCM.menu.items.map( (e,i) => {
+						return <Button key={ i } altClass="menu"
+							text={ e.name }
+						/>
+					})
+				}
 			</div>
       </section>
    );

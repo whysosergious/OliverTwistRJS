@@ -6,6 +6,7 @@ import './Container.css';
 
 // zergski logic
 import { useGlobalObj, globalObj } from 'zergski-global';
+import { ZCM } from 'logic/zcm';
 
 // media
 // import menuImage from 'ass/img/menu.jpg';
@@ -15,7 +16,7 @@ import Button from 'shared/Button';
 import Anchor from 'shared/Anchor';
 // import ImageWrapper from 'shared/ImageWrapper';
 
-const Navigation = props => {
+const Navigation = () => {
 	const Nav = {
 		ref: useRef(null),
 		index: 1,
@@ -83,33 +84,33 @@ const Navigation = props => {
 				/>
 
 				<Button altClass="minimal lang"
-					text="Eng."
+					text={ ZCM.shared.buttons.lang }
 					clicked={ '' }
 				/>
 			</div>
 			<div className="Section-Links">
 				<Button altClass="minimal"
-					text="Nyheter"
+					text={ ZCM.shared.buttons.news }
 					clicked={ ()=>handleClick('News') }
 				/>
 				<Button altClass="minimal"
-					text="Galleri"
+					text={ ZCM.shared.buttons.gallery }
 					clicked={ ()=>handleClick('Gallery') }
 				/>
 				<Button altClass="minimal"
-					text="Meny"
+					text={ ZCM.shared.buttons.menu }
 					clicked={ ()=>handleClick('Menu') }
 				/>
 				<Button altClass="minimal"
-					text="Om oss"
+					text={ ZCM.shared.buttons.about }
 					clicked={ ()=>handleClick('About') }
 				/>
 				<Button altClass="minimal"
-					text="Kontakt"
+					text={ ZCM.shared.buttons.contact }
 					clicked={ ()=>handleClick('Contact') }
 				/>
 				<Button altClass="minimal book"
-					text="Boka Bord"
+					text={ ZCM.shared.buttons.book }
 					clicked={ ()=>openModal('Book') }
 				/>
 			</div>

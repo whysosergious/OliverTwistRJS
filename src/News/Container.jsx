@@ -6,6 +6,7 @@ import './Container.css';
 
 // zergski logic
 import { useGlobalObj } from 'zergski-global';
+import { ZCM } from 'logic/zcm';
 
 // components
 import PostGroup from './PostGroup';
@@ -15,7 +16,7 @@ import Button from 'shared/Button';
 let count = 0;
 let posts = [ <PostGroup key={ count } index={ count } /> ];
 
-const NewsContainer = props => {
+const NewsContainer = () => {
 	const News = {
 		ref: useRef(null),
 		index: 2,
@@ -26,7 +27,7 @@ const NewsContainer = props => {
 		index: 0,
 		initialState: 'idle bottom',
 	}
-	const [ state, setState ] = useGlobalObj({ News }, 'Sections');
+	const [ setState ] = useGlobalObj({ News }, 'Sections');
 	const [ headingState ] = useGlobalObj({ NewsHeading }, 'ViewportAnimated');
 
 	const loadPosts = () => {
@@ -40,10 +41,10 @@ const NewsContainer = props => {
 				style={{ width: '80%', maxWidth: '30rem', marginBottom: '4rem' }}
 			>
 				<h1 className="dark">
-					<span>Senaste</span>Nyheter
+					<span>{ ZCM.news.heading_span }</span>{ ZCM.news.heading }
 				</h1>
 				<h3 className="dark">
-					Evenemang, nysläpp och mycket mer uppdaterat dagligen.
+					{ ZCM.news.body }
 				</h3>
 			</div>
 
@@ -53,7 +54,7 @@ const NewsContainer = props => {
 
 			<Button altClass="dark"
 				style={{ marginTop: '7rem' }}
-				text={ 'Ladda fler' }
+				text={ ZCM.news.button_more }
 				clicked={ loadPosts }
 			/>
       </section>

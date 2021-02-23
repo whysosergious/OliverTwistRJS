@@ -6,6 +6,7 @@ import './Container.css';
 
 // zergski logic
 import { useGlobalObj, globalObj } from 'zergski-global';
+import { ZCM } from 'logic/zcm';
 
 // media
 import cornerImage from 'ass/img/contact/corner.jpg';
@@ -20,7 +21,7 @@ import Anchor from 'shared/Anchor';
 
 
 
-const ContactContainer = props => {
+const ContactContainer = () => {
 	const Contact = {
 		ref: useRef(null),
 		index: 6,
@@ -55,16 +56,13 @@ const ContactContainer = props => {
 					/>
 					<div className={ `Heading-Group ${ headingState } va` } ref={ ContactHeading.ref }>
 						<h2>
-							Kontakta oss
+							{ ZCM.contact.heading }
 						</h2>
 						<h3 className="Contact-Message small light">
-							Har du frågor? Hesitera inte att höra av dig via telefon eller mejl! Boka bord gör du enkelt online för begränsad antal i sällskapet. För större sällskap ring eller mejla så ordnar vi det!
-							<p>
-								OBS! På grund av rådande begränsningar under pandemin kan vi inte ta emot sällskap med fler än fyra personer.
-							</p>
+							{ ZCM.contact.body }
 						</h3>
 						<Button altClass="underline"
-							text="Boka bord online"
+							text={ ZCM.contact.button_book }
 							style={{ display: 'inline-block', margin: '4rem 0 2rem 0' }}
 							clicked={ ()=>handleClick('Book') }
 						/>

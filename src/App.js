@@ -6,35 +6,15 @@ import './animation.css';
 import { Redirect, Route, BrowserRouter as Router } from "react-router-dom";
 
 // zergski logic
-import { useGlobalObj, globalObj, createObserver, queueFrame } from 'zergski-global';
+import { globalObj, createObserver, queueFrame } from 'zergski-global';
 import 'logic/zergski-content-manager';
-import { routerHook, useRouterHook } from 'logic/router';
+import { useRouterHook } from 'logic/router';
 
 import Home from './Pages/Home';
 
-// nav
-import Navigation from './Navigation/Container';
-
-// Page Sections
-import LandingContainer from './Landing/Container';
-import DoormatContainer from './Doormat/Container';
-import NewsContainer from './News/Container';
-import GalleryContainer from './Gallery/Container';
-import MenuContainer from './Menu/Container';
-import AboutContainer from './About/Container';
-import ContactContainer from './Contact/Container';
-import FooterContainer from './Footer/Container';
 
 // Routed pages
 import GalleryPage from 'Pages/Gallery/Container';
-
-// Modals
-import MediaViewer from 'modals/MediaViewer';
-import ModalWindow from 'modals/Window';
-
-// components
-import Button from 'shared/Button';
-import Anchor from 'shared/Anchor';
 
 
 
@@ -44,7 +24,7 @@ import Anchor from 'shared/Anchor';
  * send all of them separately
  * @param {*} props
  */
-const handleNavigation = ({ entry, observer }) => {
+const handleNavigation = ({ entry }) => {
 	if ( entry.target.zKey === 'Nav' && entry.isIntersecting ) {
 		globalObj.Sections.Nav.setState({ sticky: 'stuck' });
 	} else if ( entry.target.zKey === 'Nav' && !entry.isIntersecting ) {
@@ -52,7 +32,7 @@ const handleNavigation = ({ entry, observer }) => {
 	}
 }
 
-const handleViewportAnimated = ({ entry, observer, prevRatio }) => {
+const handleViewportAnimated = ({ entry, observer }) => {
 	// console.log(entry.target.zKey, entry.isIntersecting)
 	if ( entry.isIntersecting ) {
 		queueFrame(() => {
@@ -97,51 +77,16 @@ const App = () => {
 			['0px 0px -99% 0px'],
 			1
 		);
-
-		// window.onclick = e => {
-		// 	console.log(e.target);
-		// 	console.log(e.target.inerHtml)
-		// }
 	}, []);
 
 	return (
-
-
-
-			<main className="App" ref={ main.ref }>
-				{/* <LandingContainer />
-				<Navigation />
-				<header className="App-header">
-					<Anchor altClass="icon"
-						link="none"
-						fileName="otlogo-white-simple.svg"
-						style={{ marginRight: 'auto', height: '2.4rem' }}
-					/>
-
-					<Button altClass="minimal lang"
-						text="Eng."
-						clicked={ '' }
-					/>
-				</header>
-
-				<DoormatContainer />
-				<NewsContainer />
-				<GalleryContainer />
-				<MenuContainer />
-				<AboutContainer />
-				<ContactContainer />
-				<FooterContainer />
-
-				<MediaViewer />
-				<ModalWindow /> */}
-				<Router>
-		{ route ? <Redirect to={ route } /> : '' }
-		 	<Route path="/" component={ Home } />
-      	<Route path="/gallery" component={ GalleryPage } />
-		</Router>
-
-			</main>
-
+		<main className="App" ref={ main.ref }>
+			<Router>
+			{ route ? <Redirect to={ route } /> : '' }
+				<Route path="/" component={ Home } />
+					<Route path="/gallery" component={ GalleryPage } />
+			</Router>
+		</main>
 	);
 }
 
