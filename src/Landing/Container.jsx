@@ -6,6 +6,10 @@ import './Container.css';
 import Button from 'shared/Button';
 import { globalObj } from 'zergski-global';
 
+// media
+import Video from 'ass/vid/fourseconds.mp4';
+import VideoOverlay from 'ass/img/overlay.png';
+
 // logic
 import { ZCM } from 'logic/zcm';
 
@@ -18,6 +22,12 @@ const LandingContainer = () => {
 	return (
 		<section className="Landing-Container">
 
+      <div className="Video-Container">
+      
+        <video autoPlay="true" muted="true" src={ Video } playsInline="true" loop="true">
+        </video>
+        <div className="Video-Overlay"></div>
+      </div>
 
 			<div className="Greeting-Group">
 
@@ -35,6 +45,10 @@ const LandingContainer = () => {
 					clicked={ ()=>handleClick('Book') }
 				/>
 			</div>
+      <Button altClass="minimal lang"
+					text="Eng."
+					clicked={ '' }
+				/>
 		</section>
 	);
 }

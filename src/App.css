@@ -13,8 +13,14 @@
 	display: flex;
 	position: absolute;
 	flex-direction: row;
-	align-items: center;
+	justify-content: flex-end;
 	top:0;
 	width: 100%;
 	padding: .2rem 1rem;
+}
+
+
+/* DEV */
+vis-bug {
+  z-index: 1000;
 }

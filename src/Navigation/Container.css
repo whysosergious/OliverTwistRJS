@@ -11,7 +11,9 @@ nav {
 	/* background-color: #151a1c; */
 }
 
-
+nav .Social-Group {
+  display: none;
+}
 
 .Section-Links {
 	display: flex;
@@ -51,8 +53,7 @@ nav.stuck .Quick-Bar {
 	background-color: #0c1113;
 }
 .Quick-Bar .Anchor,
-.Quick-Bar button,
-button.book {
+.Quick-Bar button {
 	opacity: 0;
 
 	transition: opacity .2s ease-in-out;
@@ -73,9 +74,82 @@ nav.stuck .Quick-Bar button {
 }
 
 button.minimal.lang {
-	top: .1rem;
+  position: absolute;
+	top: 1rem;
+  right: 1rem;
 	width: 2rem;
 }
 button.minimal.lang h2 {
-	font-size: 1.2rem;
+	font-size: 1.7rem;
+}
+
+.Mobile-Nav-Button,
+.Mobile-Close-Nav-Button {
+  display: none;
+}
+
+@media screen and (max-width: 501px) {
+  nav {
+    display: none;
+    position: fixed;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100vw;
+    background-color: #0c1113;
+    overflow: hidden;
+  }
+  nav.show {
+    display: flex;
+  }
+  nav .Social-Group {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    width: 60%;
+    bottom: 8%;
+    left: 12vw;
+    padding: 0;
+  }
+  nav .Social-Group .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.7rem;
+  }
+
+  .Section-Links {
+    flex-direction: column;
+    height: auto;
+    justify-items: center;
+    align-items: flex-start;
+    justify-self: flex-start;
+  }
+  .Section-Links button {
+    margin: 1.4rem 0;
+  }
+  div.Section-Links button h2 {
+    font-size: 3rem;
+  }
+  .Mobile-Nav-Button,
+  .Mobile-Close-Nav-Button {
+    display: block;
+    position: fixed;
+    height: 3.3rem;
+    width: 3.3rem;
+    right: 1rem;
+    bottom: 1rem;
+    padding: .6rem;
+    border-radius: .7rem;
+
+    z-index: 10;
+  }
+  .Mobile-Nav-Button {
+    background-color: #0c1113bd;
+  }
+  .Mobile-Nav-Button.hide {
+    visibility: hidden;
+  }
+  .Mobile-Close-Nav-Button.hide {
+    display: none;
+  }
 }

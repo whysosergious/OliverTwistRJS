@@ -2,7 +2,7 @@
 
 export const fetchJSON = async () => {
   // fetching content JSON
-  await fetch('http://localhost/brokenOt/test/data.json'
+  await fetch('http://localhost/angryPXL/apps/testapp/data/TextContent.json'
   ,{
     headers : { 
       'Content-Type': 'application/json',

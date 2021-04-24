@@ -16,6 +16,10 @@ import Button from 'shared/Button';
 import Anchor from 'shared/Anchor';
 // import ImageWrapper from 'shared/ImageWrapper';
 
+// icons
+import MobileNavIcon from 'ass/vector/files/nav.svg';
+import LargeCrossIcon from 'ass/vector/files/large-cross.svg';
+
 const Navigation = () => {
 	const Nav = {
 		ref: useRef(null),
@@ -26,6 +30,7 @@ const Navigation = () => {
 	// that we can set from all components that import 'global-access' collection
 	const [ state ] = useGlobalObj({ Nav }, 'Sections');
 	const [ swipe, setSwipe ] = useState(null);
+  const [ mobState, setMobState ] = useState('hide');
 
 	const handleClick = target => {
 		const { main: { root }, Sections } = globalObj;
@@ -73,50 +78,85 @@ const Navigation = () => {
 		globalObj.Sections.Nav.scrollTo = handleClick;
 	}, [])
 
-   return (
-      <nav className={ `${ state.sticky } ${ swipe }` } ref={ Nav.ref }>
-			<div className={ `Quick-Bar va` }>
-				<Anchor altClass="icon"
-					link=""
-					fileName="otlogo-minimal.svg"
-					style={{ marginRight: 'auto', padding: '.15rem' }}
-					clicked={ ()=>handleClick(0) }
-				/>
+  const toggleMenu = s => {
+    setMobState(s);
+  }
 
-				<Button altClass="minimal lang"
-					text={ ZCM.shared.buttons.lang }
+  return (
+    <>
+    <nav className={ `${ state.sticky } ${ swipe } ${ mobState }` } ref={ Nav.ref }>
+      <div className={ `Quick-Bar va` }>
+        <Anchor altClass="icon"
+          link=""
+          fileName="otlogo-minimal.svg"
+          style={{ marginRight: 'auto', padding: '.15rem' }}
+          clicked={ ()=>handleClick(0) }
+        />
+
+        <Button altClass="minimal lang"
+          text={ ZCM.shared.buttons.lang }
+          clicked={ '' }
+        />
+      </div>
+      <div className="Section-Links">
+        <Button altClass="minimal"
+          text={ ZCM.shared.buttons.news }
+          clicked={ ()=>handleClick('News') }
+        />
+        <Button altClass="minimal"
+          text={ ZCM.shared.buttons.gallery }
+          clicked={ ()=>handleClick('Gallery') }
+        />
+        <Button altClass="minimal"
+          text={ ZCM.shared.buttons.menu }
+          clicked={ ()=>handleClick('Menu') }
+        />
+        <Button altClass="minimal"
+          text={ ZCM.shared.buttons.about }
+          clicked={ ()=>handleClick('About') }
+        />
+        <Button altClass="minimal"
+          text={ ZCM.shared.buttons.contact }
+          clicked={ ()=>handleClick('Contact') }
+        />
+        <Button altClass="minimal book"
+          text={ ZCM.shared.buttons.book }
+          clicked={ ()=>openModal('Book') }
+        />
+      </div>
+      <div className="Social-Group">
+        <Anchor altClass="icon"
+          link="instagram.com"
+          fileName="instagram.svg"
+        />
+        <Anchor altClass="icon"
+          link="facebook.com"
+          fileName="facebook.svg"
+        />
+        <Anchor altClass="icon"
+          link="tripadvisor.com"
+          fileName="tripadvisor.svg"
+        />
+        <Anchor altClass="icon"
+          link="google.com"
+          fileName="google.svg"
+        />
+      </div>
+      <Button altClass="minimal lang"
+					text="Eng."
 					clicked={ '' }
 				/>
-			</div>
-			<div className="Section-Links">
-				<Button altClass="minimal"
-					text={ ZCM.shared.buttons.news }
-					clicked={ ()=>handleClick('News') }
-				/>
-				<Button altClass="minimal"
-					text={ ZCM.shared.buttons.gallery }
-					clicked={ ()=>handleClick('Gallery') }
-				/>
-				<Button altClass="minimal"
-					text={ ZCM.shared.buttons.menu }
-					clicked={ ()=>handleClick('Menu') }
-				/>
-				<Button altClass="minimal"
-					text={ ZCM.shared.buttons.about }
-					clicked={ ()=>handleClick('About') }
-				/>
-				<Button altClass="minimal"
-					text={ ZCM.shared.buttons.contact }
-					clicked={ ()=>handleClick('Contact') }
-				/>
-				<Button altClass="minimal book"
-					text={ ZCM.shared.buttons.book }
-					clicked={ ()=>openModal('Book') }
-				/>
-			</div>
-
-      </nav>
-   );
+    </nav>
+    <img className={ `Mobile-Nav-Button ${ mobState === 'show' ? 'hide' : '' }` } src={ MobileNavIcon } 
+      alt="Mobile Navigation Button"
+      onClick={ ()=>toggleMenu('show') }
+    />
+    <img className={ `Mobile-Close-Nav-Button ${ mobState }` } src={ LargeCrossIcon } 
+      alt="Mobile Navigation Button"
+      onClick={ ()=>toggleMenu('hide') }
+    />
+    </>
+  );
 }
 
 export default Navigation;

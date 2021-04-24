@@ -29,18 +29,6 @@ const Home = () => {
 		<>
 			<LandingContainer />
 			<Navigation />
-			<header className="App-header">
-				<Anchor altClass="icon"
-					link="none"
-					fileName="otlogo-white-simple.svg"
-					style={{ marginRight: 'auto', height: '2.4rem' }}
-				/>
-
-				<Button altClass="minimal lang"
-					text="Eng."
-					clicked={ '' }
-				/>
-			</header>
 
 			<DoormatContainer />
 			<NewsContainer />
